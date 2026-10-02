@@ -81,6 +81,7 @@ h1 {
 
 .workspace {
   display: grid;
+  grid-template-columns: 280px 1fr;
   grid-template-rows: 1fr auto;
   max-width: 1120px;
   width: 100%;
@@ -90,6 +91,81 @@ h1 {
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 0 20px 50px rgb(33 45 60 / 10%);
+}
+
+.sessions {
+  grid-row: 1 / span 2;
+  border-right: 1px solid #dde4eb;
+  padding: 16px;
+  background: #f8fafb;
+}
+
+.sessions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.sessions h2 {
+  margin: 0;
+  color: #2d3642;
+  font-size: 1rem;
+}
+
+.sessions button {
+  border: 1px solid #ccd5df;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #2b3c4d;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.sessions button:hover {
+  border-color: #7c95ad;
+  background: #eef5f7;
+}
+
+.new-session {
+  width: 100%;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.session-list {
+  display: grid;
+  gap: 8px;
+  max-height: calc(100vh - 330px);
+  overflow-y: auto;
+}
+
+.session-item {
+  display: grid;
+  width: 100%;
+  gap: 2px;
+  text-align: left;
+}
+
+.session-item.active {
+  border-color: #277464;
+  background: #e8f4f1;
+}
+
+.session-item span {
+  font-weight: 700;
+}
+
+.session-item small,
+.history-empty,
+.history-error {
+  color: #697888;
+  font-size: 0.82rem;
+}
+
+.history-error {
+  color: #8b2f26;
 }
 
 .conversation {
@@ -223,6 +299,7 @@ h1 {
 }
 
 .composer {
+  grid-column: 2;
   border-top: 1px solid #dde4eb;
   padding: 16px;
 }
@@ -288,6 +365,24 @@ textarea:focus {
     min-height: 420px;
     max-height: none;
     padding: 16px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .sessions {
+    grid-row: auto;
+    border-right: 0;
+    border-bottom: 1px solid #dde4eb;
+  }
+
+  .session-list {
+    max-height: 220px;
+  }
+
+  .composer {
+    grid-column: 1;
   }
 
   .composer-row {

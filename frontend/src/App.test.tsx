@@ -18,6 +18,8 @@ const supportedResponse = {
   metadata: {},
 };
 
+const emptySessions = new Response(JSON.stringify([]), { status: 200 });
+
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
@@ -34,12 +36,16 @@ describe('App', () => {
 
   it('submits a question and displays answer with sources', async () => {
     let resolveFetch: (response: Response) => void = () => undefined;
-    vi.spyOn(globalThis, 'fetch').mockImplementation(
-      () =>
+    vi.spyOn(globalThis, 'fetch').mockImplementation((input) => {
+      if (String(input).endsWith('/api/sessions')) {
+        return Promise.resolve(emptySessions.clone());
+      }
+      return (
         new Promise<Response>((resolve) => {
           resolveFetch = resolve;
-        }),
-    );
+        })
+      );
+    });
     render(<App />);
 
     await userEvent.type(
@@ -59,8 +65,11 @@ describe('App', () => {
   });
 
   it('shows unsupported answers without sources', async () => {
-    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
-      new Response(
+    vi.spyOn(globalThis, 'fetch').mockImplementation((input) => {
+      if (String(input).endsWith('/api/sessions')) {
+        return Promise.resolve(emptySessions.clone());
+      }
+      return Promise.resolve(new Response(
         JSON.stringify({
           answer: 'No hay información suficiente.',
           session_id: 'session-ood',
@@ -69,8 +78,8 @@ describe('App', () => {
           metadata: {},
         }),
         { status: 200 },
-      ),
-    );
+      ));
+    });
     render(<App />);
 
     await userEvent.type(
@@ -87,11 +96,14 @@ describe('App', () => {
   });
 
   it('renders API errors', async () => {
-    vi.spyOn(globalThis, 'fetch').mockResolvedValue(
-      new Response(JSON.stringify({ detail: 'El servicio RAG no esta disponible' }), {
+    vi.spyOn(globalThis, 'fetch').mockImplementation((input) => {
+      if (String(input).endsWith('/api/sessions')) {
+        return Promise.resolve(emptySessions.clone());
+      }
+      return Promise.resolve(new Response(JSON.stringify({ detail: 'El servicio RAG no esta disponible' }), {
         status: 503,
-      }),
-    );
+      }));
+    });
     render(<App />);
 
     await userEvent.type(screen.getByRole('textbox', { name: /pregunta/i }), 'pregunta');
@@ -103,9 +115,12 @@ describe('App', () => {
   });
 
   it('reuses the session id returned by the backend', async () => {
-    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
-      new Response(JSON.stringify(supportedResponse), { status: 200 }),
-    );
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation((input) => {
+      if (String(input).endsWith('/api/sessions')) {
+        return Promise.resolve(emptySessions.clone());
+      }
+      return Promise.resolve(new Response(JSON.stringify(supportedResponse), { status: 200 }));
+    });
     render(<App />);
 
     await userEvent.type(screen.getByRole('textbox', { name: /pregunta/i }), 'primera');
@@ -114,15 +129,76 @@ describe('App', () => {
 
     await userEvent.type(screen.getByRole('textbox', { name: /pregunta/i }), 'segunda');
     await userEvent.click(screen.getByRole('button', { name: /enviar/i }));
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    await waitFor(() => {
+      const chatCalls = fetchMock.mock.calls.filter(([input]) => String(input).endsWith('/api/chat'));
+      expect(chatCalls).toHaveLength(2);
+    });
 
-    expect(JSON.parse(fetchMock.mock.calls[0][1]?.body as string)).toEqual({
+    const chatCalls = fetchMock.mock.calls.filter(([input]) => String(input).endsWith('/api/chat'));
+
+    expect(JSON.parse(chatCalls[0][1]?.body as string)).toEqual({
       message: 'primera',
       session_id: null,
     });
-    expect(JSON.parse(fetchMock.mock.calls[1][1]?.body as string)).toEqual({
+    expect(JSON.parse(chatCalls[1][1]?.body as string)).toEqual({
       message: 'segunda',
       session_id: 'session-1',
     });
+  });
+
+  it('loads a previous session from persisted history', async () => {
+    vi.spyOn(globalThis, 'fetch').mockImplementation((input) => {
+      const url = String(input);
+      if (url.endsWith('/api/sessions')) {
+        return Promise.resolve(
+          new Response(
+            JSON.stringify([
+              {
+                id: 'session-previa',
+                created_at: '2026-10-02T10:00:00Z',
+                updated_at: '2026-10-02T10:05:00Z',
+              },
+            ]),
+            { status: 200 },
+          ),
+        );
+      }
+      if (url.endsWith('/api/sessions/session-previa/messages')) {
+        return Promise.resolve(
+          new Response(
+            JSON.stringify([
+              {
+                id: 1,
+                session_id: 'session-previa',
+                role: 'user',
+                content: 'Pregunta anterior',
+                created_at: '2026-10-02T10:00:00Z',
+                supported_by_context: null,
+                sources_count: null,
+              },
+              {
+                id: 2,
+                session_id: 'session-previa',
+                role: 'assistant',
+                content: 'Respuesta anterior',
+                created_at: '2026-10-02T10:00:03Z',
+                supported_by_context: true,
+                sources_count: 2,
+              },
+            ]),
+            { status: 200 },
+          ),
+        );
+      }
+      return Promise.resolve(new Response(JSON.stringify(supportedResponse), { status: 200 }));
+    });
+
+    render(<App />);
+
+    await waitFor(() => expect(screen.getByText('session-')).toBeInTheDocument());
+    await userEvent.click(screen.getByText('session-'));
+
+    await waitFor(() => expect(screen.getByText('Pregunta anterior')).toBeInTheDocument());
+    expect(screen.getByText('Respuesta anterior')).toBeInTheDocument();
   });
 });

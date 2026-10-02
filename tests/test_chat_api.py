@@ -3,7 +3,7 @@ from fastapi import HTTPException
 from pydantic import ValidationError
 
 from app.api.routes.chat import chat
-from app.api.routes.conversations import analytics_summary, session_messages
+from app.api.routes.conversations import analytics_summary, session_messages, sessions
 from app.schemas import AnalyticsSummary, ChatRequest, ConversationSession, RAGResponse, Source
 
 
@@ -52,6 +52,15 @@ class FakeConversationRepository:
 
     def get_messages(self, session_id: str):
         return []
+
+    def list_sessions(self):
+        return [
+            ConversationSession(
+                id="session-a",
+                created_at="2026-01-01T00:00:00+00:00",
+                updated_at="2026-01-01T00:01:00+00:00",
+            )
+        ]
 
     def get_analytics_summary(self):
         return AnalyticsSummary(
@@ -118,3 +127,9 @@ def test_analytics_summary_route_returns_repository_summary() -> None:
 
     assert summary.total_sessions == 1
     assert summary.impact_indicators["supported_answer_rate"] == 0
+
+
+def test_sessions_route_lists_persisted_sessions() -> None:
+    result = sessions(FakeConversationRepository())  # type: ignore[arg-type]
+
+    assert result[0].id == "session-a"

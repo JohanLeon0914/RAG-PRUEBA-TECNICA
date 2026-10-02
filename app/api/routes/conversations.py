@@ -4,9 +4,19 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from app.dependencies import get_conversation_repository
 from app.repositories.conversation_repository import ConversationRepository
-from app.schemas import AnalyticsSummary, ConversationMessage
+from app.schemas import AnalyticsSummary, ConversationMessage, ConversationSession
 
 router = APIRouter()
+
+
+@router.get("/sessions", response_model=list[ConversationSession])
+def sessions(
+    repository: Annotated[
+        ConversationRepository,
+        Depends(get_conversation_repository),
+    ],
+) -> list[ConversationSession]:
+    return repository.list_sessions()
 
 
 @router.get("/sessions/{session_id}/messages", response_model=list[ConversationMessage])
