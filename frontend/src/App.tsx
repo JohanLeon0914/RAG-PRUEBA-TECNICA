@@ -35,7 +35,7 @@ export function App() {
         current.map((turn) => (turn.id === turnId ? { ...turn, response } : turn)),
       );
     } catch (error) {
-      const detail = error instanceof Error ? error.message : 'Unexpected error';
+      const detail = error instanceof Error ? error.message : 'Error inesperado';
       setTurns((current) =>
         current.map((turn) => (turn.id === turnId ? { ...turn, error: detail } : turn)),
       );
@@ -52,26 +52,26 @@ export function App() {
     <main className="shell">
       <section className="intro" aria-labelledby="app-title">
         <div>
-          <p className="eyebrow">Technical RAG prototype</p>
-          <h1 id="app-title">Banking RAG Assistant</h1>
+          <p className="eyebrow">Prototipo tecnico RAG</p>
+          <h1 id="app-title">Asistente RAG Bancario</h1>
           <p className="summary">
-            Answers are generated from publicly available banking information indexed in
-            Qdrant. Unsupported questions should be rejected without showing irrelevant
-            sources.
+            Las respuestas se generan a partir de informacion bancaria publica indexada
+            en Qdrant. Las preguntas sin evidencia suficiente se rechazan sin mostrar
+            fuentes irrelevantes.
           </p>
         </div>
         <div className="status">
           <span className="status-dot" aria-hidden="true" />
-          Local stack
+          Stack local
         </div>
       </section>
 
-      <section className="workspace" aria-label="Conversation">
+      <section className="workspace" aria-label="Conversacion">
         <div className="conversation" aria-live="polite">
           {turns.length === 0 ? (
             <div className="empty-state">
-              <h2>Ask about accounts, cards, loans, housing or investments.</h2>
-              <div className="examples" aria-label="Example questions">
+              <h2>Pregunta sobre cuentas, tarjetas, creditos, vivienda o inversiones.</h2>
+              <div className="examples" aria-label="Preguntas de ejemplo">
                 {examples.map((example) => (
                   <button key={example} type="button" onClick={() => handleExample(example)}>
                     {example}
@@ -82,21 +82,21 @@ export function App() {
           ) : (
             turns.map((turn) => <ChatTurnView key={turn.id} turn={turn} />)
           )}
-          {isLoading ? <div className="assistant pending">Consulting sources...</div> : null}
+          {isLoading ? <div className="assistant pending">Consultando fuentes...</div> : null}
         </div>
 
         <form className="composer" onSubmit={handleSubmit}>
-          <label htmlFor="message">Question</label>
+          <label htmlFor="message">Pregunta</label>
           <div className="composer-row">
             <textarea
               id="message"
               value={message}
               onChange={(event) => setMessage(event.target.value)}
-              placeholder="Ask a banking product question..."
+              placeholder="Escribe una pregunta sobre productos bancarios..."
               rows={2}
             />
             <button type="submit" disabled={!message.trim() || isLoading}>
-              Send
+              Enviar
             </button>
           </div>
         </form>
@@ -113,7 +113,7 @@ function ChatTurnView({ turn }: { turn: ChatTurn }) {
       {turn.response ? (
         <div className="assistant">
           {!turn.response.supported_by_context ? (
-            <p className="unsupported">No sufficient evidence in the indexed corpus.</p>
+            <p className="unsupported">No hay evidencia suficiente en el corpus indexado.</p>
           ) : null}
           <p>{turn.response.answer}</p>
           {turn.response.supported_by_context && turn.response.sources.length > 0 ? (
@@ -128,7 +128,7 @@ function ChatTurnView({ turn }: { turn: ChatTurn }) {
 function Sources({ sources }: { sources: ChatResponse['sources'] }) {
   return (
     <div className="sources">
-      <h3>Sources</h3>
+      <h3>Fuentes</h3>
       <ul>
         {sources.map((source) => (
           <li key={`${source.url}-${source.chunk_index ?? 'page'}`}>

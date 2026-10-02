@@ -26,8 +26,8 @@ describe('App', () => {
   it('renders the main chat surface', () => {
     render(<App />);
 
-    expect(screen.getByRole('heading', { name: /banking rag assistant/i })).toBeInTheDocument();
-    expect(screen.getByRole('textbox', { name: /question/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /asistente rag bancario/i })).toBeInTheDocument();
+    expect(screen.getByRole('textbox', { name: /pregunta/i })).toBeInTheDocument();
   });
 
   it('submits a question and displays answer with sources', async () => {
@@ -41,15 +41,15 @@ describe('App', () => {
     render(<App />);
 
     await userEvent.type(
-      screen.getByRole('textbox', { name: /question/i }),
+      screen.getByRole('textbox', { name: /pregunta/i }),
       '¿Qué opciones de vivienda hay?',
     );
-    await userEvent.click(screen.getByRole('button', { name: /send/i }));
+    await userEvent.click(screen.getByRole('button', { name: /enviar/i }));
 
-    expect(screen.getByText(/consulting sources/i)).toBeInTheDocument();
+    expect(screen.getByText(/consultando fuentes/i)).toBeInTheDocument();
     resolveFetch(new Response(JSON.stringify(supportedResponse), { status: 200 }));
     await waitFor(() => expect(screen.getByText('Respuesta con evidencia')).toBeInTheDocument());
-    expect(screen.getByText('Sources')).toBeInTheDocument();
+    expect(screen.getByText('Fuentes')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Crédito de vivienda' })).toHaveAttribute(
       'href',
       'https://www.bancolombia.com/personas/creditos/vivienda',
@@ -71,31 +71,31 @@ describe('App', () => {
     render(<App />);
 
     await userEvent.type(
-      screen.getByRole('textbox', { name: /question/i }),
+      screen.getByRole('textbox', { name: /pregunta/i }),
       '¿Cuál es la capital de Japón?',
     );
-    await userEvent.click(screen.getByRole('button', { name: /send/i }));
+    await userEvent.click(screen.getByRole('button', { name: /enviar/i }));
 
     await waitFor(() =>
       expect(screen.getByText('No hay información suficiente.')).toBeInTheDocument(),
     );
-    expect(screen.getByText(/no sufficient evidence/i)).toBeInTheDocument();
-    expect(screen.queryByText('Sources')).not.toBeInTheDocument();
+    expect(screen.getByText(/no hay evidencia suficiente/i)).toBeInTheDocument();
+    expect(screen.queryByText('Fuentes')).not.toBeInTheDocument();
   });
 
   it('renders API errors', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(
-      new Response(JSON.stringify({ detail: 'RAG service is temporarily unavailable' }), {
+      new Response(JSON.stringify({ detail: 'El servicio RAG no esta disponible' }), {
         status: 503,
       }),
     );
     render(<App />);
 
-    await userEvent.type(screen.getByRole('textbox', { name: /question/i }), 'pregunta');
-    await userEvent.click(screen.getByRole('button', { name: /send/i }));
+    await userEvent.type(screen.getByRole('textbox', { name: /pregunta/i }), 'pregunta');
+    await userEvent.click(screen.getByRole('button', { name: /enviar/i }));
 
     await waitFor(() =>
-      expect(screen.getByText('RAG service is temporarily unavailable')).toBeInTheDocument(),
+      expect(screen.getByText('El servicio RAG no esta disponible')).toBeInTheDocument(),
     );
   });
 });

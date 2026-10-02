@@ -21,7 +21,7 @@ export async function sendMessage(message: string): Promise<ChatResponse> {
 
   if (!response.ok) {
     const detail = await safeErrorDetail(response);
-    throw new Error(detail || 'The assistant is unavailable.');
+    throw new Error(detail || 'El asistente no esta disponible.');
   }
 
   return response.json() as Promise<ChatResponse>;
