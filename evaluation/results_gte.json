@@ -1,0 +1,876 @@
+[
+  {
+    "question_id": "q001",
+    "question": "¿Qué rendimiento anual ofrece la cuenta de ahorros?",
+    "category": "cuentas",
+    "relevant_chunk_ids": [
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59"
+    ],
+    "retrieved_chunk_ids": [
+      "177bfec9c9ea223f3c0ad5e053267b4e2bd3f8e55b1f34f93aab2d7ea1f8f312:0:acea0f1471bf37cd",
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59",
+      "d1059a52133bf56d3a6f4a95736aca95ebd30e57262a48a2db323d856eb73456:0:a789b41c5d2dc960",
+      "381fefe5ec3e234f262b33d290fe33d7873c25a65c7d3729f1926ba854bb041b:2:0102475805813cdc",
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:0:c442382491aaa897"
+    ],
+    "scores": [
+      0.70942944,
+      0.680722,
+      0.6788422,
+      0.6767029,
+      0.6698967
+    ],
+    "first_relevant_rank": 2,
+    "hit_at_1": false,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.5,
+    "embedding_latency": 0.087091,
+    "search_latency": 0.00505
+  },
+  {
+    "question_id": "q002",
+    "question": "¿La cuenta de ahorros exige monto mínimo?",
+    "category": "cuentas",
+    "relevant_chunk_ids": [
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59"
+    ],
+    "retrieved_chunk_ids": [
+      "381fefe5ec3e234f262b33d290fe33d7873c25a65c7d3729f1926ba854bb041b:1:2228f3322314c381",
+      "d1059a52133bf56d3a6f4a95736aca95ebd30e57262a48a2db323d856eb73456:1:6b2f7c5aa1db5394",
+      "177bfec9c9ea223f3c0ad5e053267b4e2bd3f8e55b1f34f93aab2d7ea1f8f312:0:acea0f1471bf37cd",
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59",
+      "381fefe5ec3e234f262b33d290fe33d7873c25a65c7d3729f1926ba854bb041b:0:55ea23a2c6bec63f"
+    ],
+    "scores": [
+      0.71572506,
+      0.7083987,
+      0.6869334,
+      0.68225884,
+      0.6676425
+    ],
+    "first_relevant_rank": 4,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.25,
+    "embedding_latency": 0.102107,
+    "search_latency": 0.005654
+  },
+  {
+    "question_id": "q003",
+    "question": "¿Cómo se puede evitar pagar 4x1000 en la cuenta?",
+    "category": "cuentas",
+    "relevant_chunk_ids": [
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59"
+    ],
+    "retrieved_chunk_ids": [
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59",
+      "381fefe5ec3e234f262b33d290fe33d7873c25a65c7d3729f1926ba854bb041b:2:0102475805813cdc",
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+      "fb7d4e44b1641394be2469ff3239db5819a746d43496062dbc4fab3bfafb9b05:1:53e3938f199e2165",
+      "de1ba8254ece5aabba0936777ae71f4ef109c7a3f6128cbb5c7e736dbae4f2c7:7:fb862cd10d723813"
+    ],
+    "scores": [
+      0.7008277,
+      0.6864434,
+      0.6748806,
+      0.6612204,
+      0.65488625
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.084145,
+    "search_latency": 0.002962
+  },
+  {
+    "question_id": "q004",
+    "question": "¿Cuántos bolsillos puedo crear en una cuenta de ahorros?",
+    "category": "cuentas",
+    "relevant_chunk_ids": [
+      "761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee:0:c5fa394d38a23fea"
+    ],
+    "retrieved_chunk_ids": [
+      "761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee:0:c5fa394d38a23fea",
+      "761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee:1:ae5b06b99a2e10d9",
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:0:c442382491aaa897",
+      "de1ba8254ece5aabba0936777ae71f4ef109c7a3f6128cbb5c7e736dbae4f2c7:1:14da5b07f607c74c",
+      "d1059a52133bf56d3a6f4a95736aca95ebd30e57262a48a2db323d856eb73456:1:6b2f7c5aa1db5394"
+    ],
+    "scores": [
+      0.82020885,
+      0.72987497,
+      0.6882367,
+      0.67527795,
+      0.6706942
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.054812,
+    "search_latency": 0.003201
+  },
+  {
+    "question_id": "q005",
+    "question": "¿Los bolsillos tienen costo o monto mínimo?",
+    "category": "cuentas",
+    "relevant_chunk_ids": [
+      "761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee:0:c5fa394d38a23fea"
+    ],
+    "retrieved_chunk_ids": [
+      "761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee:0:c5fa394d38a23fea",
+      "761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee:1:ae5b06b99a2e10d9",
+      "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:1:26baa105d0d5dbce",
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+      "381fefe5ec3e234f262b33d290fe33d7873c25a65c7d3729f1926ba854bb041b:1:2228f3322314c381"
+    ],
+    "scores": [
+      0.74536216,
+      0.7035913,
+      0.6286489,
+      0.6249608,
+      0.62273216
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.049844,
+    "search_latency": 0.002897
+  },
+  {
+    "question_id": "q006",
+    "question": "¿Qué beneficio tiene el abono automático para colombianos en el exterior?",
+    "category": "cuentas",
+    "relevant_chunk_ids": [
+      "a3d097a0acda30e2a5e8361196d52b1f2ed0c0a7242fde7af29f58233401303b:0:8c529fd10ebfe4af"
+    ],
+    "retrieved_chunk_ids": [
+      "a3d097a0acda30e2a5e8361196d52b1f2ed0c0a7242fde7af29f58233401303b:0:8c529fd10ebfe4af",
+      "a3d097a0acda30e2a5e8361196d52b1f2ed0c0a7242fde7af29f58233401303b:1:8edac1526aaab972",
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:1:c17f77f85cdd1634",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:4:ff005f7b7c7ed36c",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:5:192fa6bfb09d0bc9"
+    ],
+    "scores": [
+      0.7925804,
+      0.73440474,
+      0.73243,
+      0.7082451,
+      0.7069582
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.052052,
+    "search_latency": 0.003017
+  },
+  {
+    "question_id": "q007",
+    "question": "¿Qué beneficios de viaje ofrece la Visa Infinite?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": [
+      "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:0:1c65ed900bb6759a"
+    ],
+    "retrieved_chunk_ids": [
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:5:192fa6bfb09d0bc9",
+      "0aab8825577e3e3dae6dd3a3e7d945befef63b00c37991f9f56561d425989292:3:3921dae3e0230040",
+      "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904:3:95ab16939d2d507d",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:4:ff005f7b7c7ed36c",
+      "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:0:1c65ed900bb6759a"
+    ],
+    "scores": [
+      0.7493856,
+      0.7438236,
+      0.7438236,
+      0.7301961,
+      0.7297308
+    ],
+    "first_relevant_rank": 5,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.2,
+    "embedding_latency": 0.052174,
+    "search_latency": 0.003248
+  },
+  {
+    "question_id": "q008",
+    "question": "¿Qué ingresos se necesitan para pedir Visa Infinite?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": [
+      "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:0:1c65ed900bb6759a",
+      "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:1:8ae405cb3d9a615c"
+    ],
+    "retrieved_chunk_ids": [
+      "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:0:1c65ed900bb6759a",
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+      "18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:1:ab8d105f64a3734c",
+      "a4eb4711362286c9d12c2eb8cfe84cb4ddd4e76fcc8bfb730fbed64e7092ed25:0:d2dd482b12be9a2e",
+      "0aab8825577e3e3dae6dd3a3e7d945befef63b00c37991f9f56561d425989292:3:3921dae3e0230040"
+    ],
+    "scores": [
+      0.68086714,
+      0.65970874,
+      0.6504344,
+      0.647436,
+      0.6419621
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.050442,
+    "search_latency": 0.002846
+  },
+  {
+    "question_id": "q009",
+    "question": "¿Cuál es el cupo de la tarjeta Joven Mastercard?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": [
+      "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:1:26baa105d0d5dbce"
+    ],
+    "retrieved_chunk_ids": [
+      "0aab8825577e3e3dae6dd3a3e7d945befef63b00c37991f9f56561d425989292:1:efcfc7ab760021b9",
+      "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904:1:8feaab5ddc9efac9",
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:2:ae3f0a21c0fd5f6f",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:3:4fcdb83bee68af24",
+      "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904:5:0f4ce1f48a3bd222"
+    ],
+    "scores": [
+      0.7485258,
+      0.7485258,
+      0.72725695,
+      0.70429826,
+      0.69232917
+    ],
+    "first_relevant_rank": null,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": false,
+    "reciprocal_rank": 0.0,
+    "embedding_latency": 0.05052,
+    "search_latency": 0.003006
+  },
+  {
+    "question_id": "q010",
+    "question": "¿Qué edad aplica para la tarjeta de crédito Joven?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": [
+      "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:0:fbeeac01033e7d54",
+      "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:1:26baa105d0d5dbce"
+    ],
+    "retrieved_chunk_ids": [
+      "d1059a52133bf56d3a6f4a95736aca95ebd30e57262a48a2db323d856eb73456:1:6b2f7c5aa1db5394",
+      "381fefe5ec3e234f262b33d290fe33d7873c25a65c7d3729f1926ba854bb041b:1:2228f3322314c381",
+      "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:1:26baa105d0d5dbce",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:8:8281ac2afa55e349",
+      "fb7d4e44b1641394be2469ff3239db5819a746d43496062dbc4fab3bfafb9b05:1:53e3938f199e2165"
+    ],
+    "scores": [
+      0.67899823,
+      0.6550666,
+      0.6528681,
+      0.6493049,
+      0.6488057
+    ],
+    "first_relevant_rank": 3,
+    "hit_at_1": false,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.3333333333333333,
+    "embedding_latency": 0.050971,
+    "search_latency": 0.00288
+  },
+  {
+    "question_id": "q011",
+    "question": "¿Qué bono de bienvenida da la Visa Avianca Lifemiles?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": [
+      "18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:0:d10a624016686a6e"
+    ],
+    "retrieved_chunk_ids": [
+      "18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:0:d10a624016686a6e",
+      "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904:3:95ab16939d2d507d",
+      "0aab8825577e3e3dae6dd3a3e7d945befef63b00c37991f9f56561d425989292:3:3921dae3e0230040",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:5:192fa6bfb09d0bc9",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:4:ff005f7b7c7ed36c"
+    ],
+    "scores": [
+      0.84694237,
+      0.8149196,
+      0.8149196,
+      0.7898476,
+      0.77946097
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.052094,
+    "search_latency": 0.002747
+  },
+  {
+    "question_id": "q012",
+    "question": "¿Cuántas entradas VIP anuales ofrece la Visa Avianca Lifemiles?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": [
+      "18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:0:d10a624016686a6e",
+      "18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:1:ab8d105f64a3734c"
+    ],
+    "retrieved_chunk_ids": [
+      "18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:0:d10a624016686a6e",
+      "0aab8825577e3e3dae6dd3a3e7d945befef63b00c37991f9f56561d425989292:3:3921dae3e0230040",
+      "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904:3:95ab16939d2d507d",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:5:192fa6bfb09d0bc9",
+      "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:4:ff005f7b7c7ed36c"
+    ],
+    "scores": [
+      0.84630936,
+      0.8203826,
+      0.8203826,
+      0.7858049,
+      0.7628528
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.058531,
+    "search_latency": 0.003364
+  },
+  {
+    "question_id": "q013",
+    "question": "¿Qué cuota de manejo tiene la Mastercard Oro después de los primeros meses?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": [
+      "995361bf06a780544024dca7c781e3d2210e51b64cf69e8c5144da17a450faf4:1:94a5abe58def3582"
+    ],
+    "retrieved_chunk_ids": [
+      "995361bf06a780544024dca7c781e3d2210e51b64cf69e8c5144da17a450faf4:0:92dbbe0605cb2a9d",
+      "0aab8825577e3e3dae6dd3a3e7d945befef63b00c37991f9f56561d425989292:2:b88afcdb515531b0",
+      "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904:2:94e0f78d4faf5788",
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:1:c17f77f85cdd1634",
+      "515c1e0680452925d73ec630c5952feebaf7c91613fe4f801aba5713e48b8d76:3:440eeb07ae469024"
+    ],
+    "scores": [
+      0.7835841,
+      0.7183999,
+      0.7183999,
+      0.69997823,
+      0.6735638
+    ],
+    "first_relevant_rank": null,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": false,
+    "reciprocal_rank": 0.0,
+    "embedding_latency": 0.052387,
+    "search_latency": 0.003033
+  },
+  {
+    "question_id": "q014",
+    "question": "¿Cómo se crea una tarjeta débito virtual?",
+    "category": "tarjetas_debito",
+    "relevant_chunk_ids": [
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:0:d16562595055b6e8"
+    ],
+    "retrieved_chunk_ids": [
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:3:8a3b5ee3edf3c5d1",
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:0:d16562595055b6e8",
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+      "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904:6:bea7aefd5578e607",
+      "0aab8825577e3e3dae6dd3a3e7d945befef63b00c37991f9f56561d425989292:6:92450ba1b4e13530"
+    ],
+    "scores": [
+      0.7331966,
+      0.7312013,
+      0.6961671,
+      0.6706244,
+      0.6706244
+    ],
+    "first_relevant_rank": 2,
+    "hit_at_1": false,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.5,
+    "embedding_latency": 0.048803,
+    "search_latency": 0.002785
+  },
+  {
+    "question_id": "q015",
+    "question": "¿Qué cobertura de protección de compras tienen las tarjetas débito?",
+    "category": "tarjetas_debito",
+    "relevant_chunk_ids": [
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:1:c17f77f85cdd1634"
+    ],
+    "retrieved_chunk_ids": [
+      "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:5:97cd60c5173dbaf0",
+      "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:4:4f40379bde23ad69",
+      "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:3:e16fa1df847a36e1",
+      "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:2:58c717eabffc871b",
+      "e95c35131b988bebe1e670936c7db9bb5b6e9c6624cb9bd5b42333526c9f91d6:2:316b38b0b89852a7"
+    ],
+    "scores": [
+      0.78529847,
+      0.7605141,
+      0.75566626,
+      0.73731136,
+      0.7296882
+    ],
+    "first_relevant_rank": null,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": false,
+    "reciprocal_rank": 0.0,
+    "embedding_latency": 0.051614,
+    "search_latency": 0.00294
+  },
+  {
+    "question_id": "q016",
+    "question": "¿Qué ofrece la Mastercard Black débito?",
+    "category": "tarjetas_debito",
+    "relevant_chunk_ids": [
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:2:ae3f0a21c0fd5f6f"
+    ],
+    "retrieved_chunk_ids": [
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:2:ae3f0a21c0fd5f6f",
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:1:c17f77f85cdd1634",
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:3:8a3b5ee3edf3c5d1",
+      "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904:1:8feaab5ddc9efac9"
+    ],
+    "scores": [
+      0.7373357,
+      0.7041404,
+      0.69469,
+      0.6939221,
+      0.68985397
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.052982,
+    "search_latency": 0.00292
+  },
+  {
+    "question_id": "q017",
+    "question": "¿Qué permite hacer la compra de cartera?",
+    "category": "prestamos",
+    "relevant_chunk_ids": [
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:0:45bcdb151337a359"
+    ],
+    "retrieved_chunk_ids": [
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:0:45bcdb151337a359",
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+      "392181c62291c6e38acae013762f7f7b0a11f529487b2cec44dfaf6fc5c5a29e:3:7372d3a88075d9d3",
+      "a3d097a0acda30e2a5e8361196d52b1f2ed0c0a7242fde7af29f58233401303b:1:8edac1526aaab972",
+      "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:0:d16562595055b6e8"
+    ],
+    "scores": [
+      0.7320235,
+      0.716895,
+      0.6785799,
+      0.6751562,
+      0.65862787
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.047903,
+    "search_latency": 0.002691
+  },
+  {
+    "question_id": "q018",
+    "question": "¿Qué plazos maneja la compra de cartera?",
+    "category": "prestamos",
+    "relevant_chunk_ids": [
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:1:3110765748756d15"
+    ],
+    "retrieved_chunk_ids": [
+      "392181c62291c6e38acae013762f7f7b0a11f529487b2cec44dfaf6fc5c5a29e:0:cecdcc507f20fed3",
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+      "a3190c2606656202b5dacf70859e135a2261a2bfc22f10b52296d8b7439a1739:1:5b36f5aec8433be7",
+      "fb7d4e44b1641394be2469ff3239db5819a746d43496062dbc4fab3bfafb9b05:8:a67788c3c6100b43",
+      "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:1:3110765748756d15"
+    ],
+    "scores": [
+      0.7032126,
+      0.695166,
+      0.690261,
+      0.6775861,
+      0.6763677
+    ],
+    "first_relevant_rank": 5,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.2,
+    "embedding_latency": 0.05084,
+    "search_latency": 0.002668
+  },
+  {
+    "question_id": "q019",
+    "question": "¿Qué requisito de ingresos tiene Crediágil?",
+    "category": "prestamos",
+    "relevant_chunk_ids": [
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:0:bcd3f33203bb0978",
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:1:8e0e359b69dcc35e"
+    ],
+    "retrieved_chunk_ids": [
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:2:2f06eb9fb6f59737",
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:1:8e0e359b69dcc35e",
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:3:7b1fe1b93590a694",
+      "a4eb4711362286c9d12c2eb8cfe84cb4ddd4e76fcc8bfb730fbed64e7092ed25:0:d2dd482b12be9a2e",
+      "edf6208a8e5401ba4182c493dc1b77064676b5b587beca5823a99a81125f0282:5:7afe0b49a6836d65"
+    ],
+    "scores": [
+      0.73604405,
+      0.7325194,
+      0.66440105,
+      0.63887626,
+      0.6264298
+    ],
+    "first_relevant_rank": 2,
+    "hit_at_1": false,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.5,
+    "embedding_latency": 0.049971,
+    "search_latency": 0.002838
+  },
+  {
+    "question_id": "q020",
+    "question": "¿Desde qué monto puedo usar un desembolso de Crediágil?",
+    "category": "prestamos",
+    "relevant_chunk_ids": [
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:1:8e0e359b69dcc35e"
+    ],
+    "retrieved_chunk_ids": [
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:2:2f06eb9fb6f59737",
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:1:8e0e359b69dcc35e",
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:0:bcd3f33203bb0978",
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:3:7b1fe1b93590a694",
+      "fb7d4e44b1641394be2469ff3239db5819a746d43496062dbc4fab3bfafb9b05:1:53e3938f199e2165"
+    ],
+    "scores": [
+      0.81594896,
+      0.77211344,
+      0.738484,
+      0.72327054,
+      0.71981037
+    ],
+    "first_relevant_rank": 2,
+    "hit_at_1": false,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.5,
+    "embedding_latency": 0.052703,
+    "search_latency": 0.00291
+  },
+  {
+    "question_id": "q021",
+    "question": "¿Qué tasa tiene Crediágil por cada desembolso?",
+    "category": "prestamos",
+    "relevant_chunk_ids": [
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:2:2f06eb9fb6f59737"
+    ],
+    "retrieved_chunk_ids": [
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:2:2f06eb9fb6f59737",
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:1:8e0e359b69dcc35e",
+      "fb7d4e44b1641394be2469ff3239db5819a746d43496062dbc4fab3bfafb9b05:5:b8c839a158e3a02f",
+      "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:0:bcd3f33203bb0978",
+      "fb7d4e44b1641394be2469ff3239db5819a746d43496062dbc4fab3bfafb9b05:1:53e3938f199e2165"
+    ],
+    "scores": [
+      0.87464905,
+      0.75957465,
+      0.70920193,
+      0.7066951,
+      0.69502753
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.053156,
+    "search_latency": 0.002763
+  },
+  {
+    "question_id": "q022",
+    "question": "¿Qué opciones de vivienda aparecen para remodelar o construir?",
+    "category": "vivienda",
+    "relevant_chunk_ids": [
+      "2fffdc0120c5922b6a4dedba9b420d4acc59ac5bb1ce3cb3c957b9d4d8075053:1:a0557188baccd873"
+    ],
+    "retrieved_chunk_ids": [
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:4:e844415b4406e42a",
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:1:b5207a51f572d0ad",
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:0:96556752f55ae83b",
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:2:d837f162fe56366e",
+      "2fffdc0120c5922b6a4dedba9b420d4acc59ac5bb1ce3cb3c957b9d4d8075053:2:823d382c1943ae23"
+    ],
+    "scores": [
+      0.7099897,
+      0.709193,
+      0.7065783,
+      0.6770302,
+      0.67022955
+    ],
+    "first_relevant_rank": null,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": false,
+    "reciprocal_rank": 0.0,
+    "embedding_latency": 0.049886,
+    "search_latency": 0.002762
+  },
+  {
+    "question_id": "q023",
+    "question": "¿Qué ingresos mínimos exige el crédito para construcción de vivienda?",
+    "category": "vivienda",
+    "relevant_chunk_ids": [
+      "bc9efbfbeebdfe4b3fdb582bde59732a9a61654e0dae6dcb0065c95cddfb2981:2:590685bbdc36991d"
+    ],
+    "retrieved_chunk_ids": [
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:1:b5207a51f572d0ad",
+      "edf6208a8e5401ba4182c493dc1b77064676b5b587beca5823a99a81125f0282:5:7afe0b49a6836d65",
+      "bc9efbfbeebdfe4b3fdb582bde59732a9a61654e0dae6dcb0065c95cddfb2981:1:e2cf6624f70095c6",
+      "bc9efbfbeebdfe4b3fdb582bde59732a9a61654e0dae6dcb0065c95cddfb2981:0:45d341294a183d1e",
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:2:d837f162fe56366e"
+    ],
+    "scores": [
+      0.7753578,
+      0.7318437,
+      0.7219702,
+      0.7104833,
+      0.7013111
+    ],
+    "first_relevant_rank": null,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": false,
+    "reciprocal_rank": 0.0,
+    "embedding_latency": 0.051226,
+    "search_latency": 0.002723
+  },
+  {
+    "question_id": "q024",
+    "question": "¿Qué modificaciones se pueden pedir sobre un crédito hipotecario de construcción?",
+    "category": "vivienda",
+    "relevant_chunk_ids": [
+      "bc9efbfbeebdfe4b3fdb582bde59732a9a61654e0dae6dcb0065c95cddfb2981:2:590685bbdc36991d"
+    ],
+    "retrieved_chunk_ids": [
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:1:b5207a51f572d0ad",
+      "fb7d4e44b1641394be2469ff3239db5819a746d43496062dbc4fab3bfafb9b05:8:a67788c3c6100b43",
+      "bc9efbfbeebdfe4b3fdb582bde59732a9a61654e0dae6dcb0065c95cddfb2981:0:45d341294a183d1e",
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:2:d837f162fe56366e",
+      "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:4:e844415b4406e42a"
+    ],
+    "scores": [
+      0.79502153,
+      0.7318394,
+      0.72888255,
+      0.7182717,
+      0.71666586
+    ],
+    "first_relevant_rank": null,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": false,
+    "reciprocal_rank": 0.0,
+    "embedding_latency": 0.051248,
+    "search_latency": 0.002946
+  },
+  {
+    "question_id": "q025",
+    "question": "¿Qué asistencias incluye el Plan de Asistencias IGS?",
+    "category": "seguros",
+    "relevant_chunk_ids": [
+      "6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389:0:af5e2cdb1cf4ac5e"
+    ],
+    "retrieved_chunk_ids": [
+      "6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389:0:af5e2cdb1cf4ac5e",
+      "6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389:2:64ffc3c85cfebc40",
+      "e95c35131b988bebe1e670936c7db9bb5b6e9c6624cb9bd5b42333526c9f91d6:8:c4761bc52cee4b1d",
+      "3992d2ff595e394e47b2199ca0a68ca452ad9461e3b50539bfa137c477928443:1:d20c5fd4eed41bd8",
+      "e95c35131b988bebe1e670936c7db9bb5b6e9c6624cb9bd5b42333526c9f91d6:3:d3341222dfaa2947"
+    ],
+    "scores": [
+      0.7847652,
+      0.7202035,
+      0.65688205,
+      0.62598795,
+      0.6196661
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.052199,
+    "search_latency": 0.002738
+  },
+  {
+    "question_id": "q026",
+    "question": "¿Cuánto cuesta mensualmente el Plan de Asistencias IGS?",
+    "category": "seguros",
+    "relevant_chunk_ids": [
+      "6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389:1:f683ee890954fbea"
+    ],
+    "retrieved_chunk_ids": [
+      "6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389:0:af5e2cdb1cf4ac5e",
+      "6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389:2:64ffc3c85cfebc40",
+      "3992d2ff595e394e47b2199ca0a68ca452ad9461e3b50539bfa137c477928443:2:17a2f0740a9acc0e",
+      "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:2:3dbf7072d3778109",
+      "db6488f24a705a01091b8c65430b2b1f00d9f129ec7da4ca68f94a781ab70edc:2:17e8b58c245b0ab6"
+    ],
+    "scores": [
+      0.7200967,
+      0.70629334,
+      0.68231344,
+      0.6614779,
+      0.6599296
+    ],
+    "first_relevant_rank": null,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": false,
+    "reciprocal_rank": 0.0,
+    "embedding_latency": 0.052223,
+    "search_latency": 0.003108
+  },
+  {
+    "question_id": "q027",
+    "question": "¿Qué cubre el Seguro de Desempleo para Libranza?",
+    "category": "seguros",
+    "relevant_chunk_ids": [
+      "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:0:9cf73e845e5fc51e"
+    ],
+    "retrieved_chunk_ids": [
+      "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:0:9cf73e845e5fc51e",
+      "e95c35131b988bebe1e670936c7db9bb5b6e9c6624cb9bd5b42333526c9f91d6:5:5f16e5668a101367",
+      "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:1:87f2b15640040dc5",
+      "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:3:e16fa1df847a36e1",
+      "e95c35131b988bebe1e670936c7db9bb5b6e9c6624cb9bd5b42333526c9f91d6:4:219b387a3e544c04"
+    ],
+    "scores": [
+      0.77370775,
+      0.7389105,
+      0.7204304,
+      0.7170978,
+      0.71540886
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.05042,
+    "search_latency": 0.002862
+  },
+  {
+    "question_id": "q028",
+    "question": "¿Qué tipos de fondos de inversión colectiva se mencionan?",
+    "category": "inversiones",
+    "relevant_chunk_ids": [
+      "c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0:0:324a8ce276f52b5a"
+    ],
+    "retrieved_chunk_ids": [
+      "e809b3e0593c0cc7f3b6743973192668ffcf4364b93d6a01b32dedaf7c37f354:4:fee835a7d79506ec",
+      "e809b3e0593c0cc7f3b6743973192668ffcf4364b93d6a01b32dedaf7c37f354:12:27601e9294689969",
+      "a5f3d4dd4cfaf60ce64cdd428bc7ce57d1305dd61d8e8597b5b1694aca28c76f:0:b8e4f4e371c67678",
+      "e809b3e0593c0cc7f3b6743973192668ffcf4364b93d6a01b32dedaf7c37f354:11:9fcf2da7f88957ee",
+      "e809b3e0593c0cc7f3b6743973192668ffcf4364b93d6a01b32dedaf7c37f354:13:cc316abba1c035e9"
+    ],
+    "scores": [
+      0.82361,
+      0.786955,
+      0.735574,
+      0.7314939,
+      0.72520596
+    ],
+    "first_relevant_rank": null,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": false,
+    "reciprocal_rank": 0.0,
+    "embedding_latency": 0.050043,
+    "search_latency": 0.002619
+  },
+  {
+    "question_id": "q029",
+    "question": "¿Para qué sirve Plan Semilla?",
+    "category": "inversiones",
+    "relevant_chunk_ids": [
+      "c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0:1:909cfb494124d177"
+    ],
+    "retrieved_chunk_ids": [
+      "f1829eee71666a03d1eb53d82bd7dbd6f6b84c837e656f9c0327ea7438ed773b:5:2863827a35aa50de",
+      "3992d2ff595e394e47b2199ca0a68ca452ad9461e3b50539bfa137c477928443:2:17a2f0740a9acc0e",
+      "9bd0e2a2acec6aa4c608aa2276cf68f51de2ac7ac2c0b5b59632cd608e748ea5:1:394308083bbc2f23",
+      "c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0:1:909cfb494124d177",
+      "3992d2ff595e394e47b2199ca0a68ca452ad9461e3b50539bfa137c477928443:3:1e02d95176523300"
+    ],
+    "scores": [
+      0.7590673,
+      0.60961837,
+      0.60800177,
+      0.597425,
+      0.589599
+    ],
+    "first_relevant_rank": 4,
+    "hit_at_1": false,
+    "hit_at_3": false,
+    "hit_at_5": true,
+    "reciprocal_rank": 0.25,
+    "embedding_latency": 0.045446,
+    "search_latency": 0.002687
+  },
+  {
+    "question_id": "q030",
+    "question": "¿Cuál es el monto mínimo para invertir en Fondo Renta Liquidez Dólares?",
+    "category": "inversiones",
+    "relevant_chunk_ids": [
+      "a5f3d4dd4cfaf60ce64cdd428bc7ce57d1305dd61d8e8597b5b1694aca28c76f:0:b8e4f4e371c67678"
+    ],
+    "retrieved_chunk_ids": [
+      "a5f3d4dd4cfaf60ce64cdd428bc7ce57d1305dd61d8e8597b5b1694aca28c76f:0:b8e4f4e371c67678",
+      "e809b3e0593c0cc7f3b6743973192668ffcf4364b93d6a01b32dedaf7c37f354:4:fee835a7d79506ec",
+      "c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0:1:909cfb494124d177",
+      "f1829eee71666a03d1eb53d82bd7dbd6f6b84c837e656f9c0327ea7438ed773b:4:ea72e5cff5dd9ee1",
+      "e809b3e0593c0cc7f3b6743973192668ffcf4364b93d6a01b32dedaf7c37f354:5:ccdf4353dcbfdf47"
+    ],
+    "scores": [
+      0.8156773,
+      0.73387116,
+      0.7321689,
+      0.720003,
+      0.7071676
+    ],
+    "first_relevant_rank": 1,
+    "hit_at_1": true,
+    "hit_at_3": true,
+    "hit_at_5": true,
+    "reciprocal_rank": 1.0,
+    "embedding_latency": 0.054524,
+    "search_latency": 0.002899
+  }
+]

@@ -1,0 +1,86 @@
+{
+  "timestamp": "2026-10-02T12:34:34.141067+00:00",
+  "corpus_fingerprint": "39e78243ffb22ad50244f76059fcc9ce0213995828add0dfdcb85622054fe23c",
+  "dataset_size": 30,
+  "embedding_model": "BAAI/bge-m3",
+  "reranker_model": "BAAI/bge-reranker-v2-m3",
+  "candidate_k": 15,
+  "final_k": 5,
+  "candidate_recall_at_15": 0.9333,
+  "baseline_metrics": {
+    "hit_at_1": 0.6,
+    "hit_at_3": 0.7667,
+    "hit_at_5": 0.8,
+    "mrr": 0.6806,
+    "mean_embedding_latency": 0.092,
+    "median_embedding_latency": 0.092,
+    "mean_search_latency": 0.0055,
+    "median_search_latency": 0.0035
+  },
+  "reranked_metrics": {
+    "hit_at_1": 0.6667,
+    "hit_at_3": 0.9,
+    "hit_at_5": 0.9333,
+    "mrr": 0.7844,
+    "mean_embedding_latency": 0.092,
+    "median_embedding_latency": 0.092,
+    "mean_search_latency": 0.0055,
+    "median_search_latency": 0.0035
+  },
+  "latency": {
+    "reranker_model_load_time": 274.314,
+    "reranker_warmup_time": 0.9594,
+    "mean_rerank_latency": 5.1837,
+    "median_rerank_latency": 5.1568,
+    "mean_total_latency": 5.2811,
+    "median_total_latency": 5.2511
+  },
+  "comparison": {
+    "improvements": [
+      "q001",
+      "q002",
+      "q015",
+      "q018",
+      "q022",
+      "q024",
+      "q026",
+      "q029"
+    ],
+    "unchanged": [
+      "q003",
+      "q004",
+      "q005",
+      "q006",
+      "q007",
+      "q008",
+      "q009",
+      "q010",
+      "q011",
+      "q012",
+      "q013",
+      "q014",
+      "q017",
+      "q019",
+      "q020",
+      "q021",
+      "q023",
+      "q025",
+      "q027",
+      "q028",
+      "q030"
+    ],
+    "regressions": [
+      "q016"
+    ],
+    "top1_regressions": [
+      "q016"
+    ],
+    "missing_candidates": [
+      "q009",
+      "q013"
+    ],
+    "improvements_count": 8,
+    "unchanged_count": 21,
+    "regressions_count": 1
+  }
+}

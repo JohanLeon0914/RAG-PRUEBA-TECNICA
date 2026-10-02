@@ -1,0 +1,242 @@
+[
+  {
+    "url": "https://www.bancolombia.com/personas/cuentas/ahorros-y-corriente/cuenta-ahorros",
+    "title": "Cuenta de ahorros Bancolombia",
+    "category": "cuentas",
+    "document_id": "7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-de-credito",
+    "title": "Tarjetas de Crédito Bancolombia | Pensadas para ti",
+    "category": "tarjetas_credito",
+    "document_id": "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/consumo/credito-libre-inversion",
+    "title": "Crédito de libre inversión para equipar tu hogar o viajar",
+    "category": "prestamos",
+    "document_id": "fb7d4e44b1641394be2469ff3239db5819a746d43496062dbc4fab3bfafb9b05"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/a-la-mano/deposito-a-la-mano",
+    "title": "A la mano se despide y le dice ¡Hola a Nequi!",
+    "category": "cuentas",
+    "document_id": "de1ba8254ece5aabba0936777ae71f4ef109c7a3f6128cbb5c7e736dbae4f2c7"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/consumo/compra-cartera",
+    "title": "Unifica tus deudas con la compra de cartera de Bancolombia",
+    "category": "prestamos",
+    "document_id": "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+    "title": "Tarjetas Débito para persona natural",
+    "category": "tarjetas_debito",
+    "document_id": "1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard/joven",
+    "title": "Tarjeta de Crédito Joven MasterCard - Obtén vida crediticia",
+    "category": "tarjetas_credito",
+    "document_id": "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-de-credito/visa/infinite",
+    "title": "Tarjetas de crédito Visa Infinite - Bancolombia",
+    "category": "tarjetas_credito",
+    "document_id": "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard",
+    "title": "Tarjeta de Crédito Mastercard  para tu libertad financiera",
+    "category": "tarjetas_credito",
+    "document_id": "0aab8825577e3e3dae6dd3a3e7d945befef63b00c37991f9f56561d425989292"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/cuentas/desde-el-exterior/cuenta-colombianos-en-el-exterior",
+    "title": "Cuenta de ahorros para Colombianos en el extranjero",
+    "category": "cuentas",
+    "document_id": "a3d097a0acda30e2a5e8361196d52b1f2ed0c0a7242fde7af29f58233401303b"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-de-credito/visa/lifemiles",
+    "title": "Tarjeta de crédito Visa Avianca Lifemiles Bancolombia - Realiza pagos online",
+    "category": "tarjetas_credito",
+    "document_id": "18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/consumo/libranza-para-empleados",
+    "title": "Crédito de libranza Bancolombia para empleados con débito automático",
+    "category": "prestamos",
+    "document_id": "a4eb4711362286c9d12c2eb8cfe84cb4ddd4e76fcc8bfb730fbed64e7092ed25"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/seguros/seguros-no-comercializados/cardif",
+    "title": "Cardif",
+    "category": "seguros",
+    "document_id": "926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard/oro",
+    "title": "Tarjeta de Crédito Oro Mastercard - Compras en el exterior",
+    "category": "tarjetas_credito",
+    "document_id": "995361bf06a780544024dca7c781e3d2210e51b64cf69e8c5144da17a450faf4"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard/unica",
+    "title": "Tarjeta Mastercard única: Solicita tu tarjeta física aquí.",
+    "category": "tarjetas_credito",
+    "document_id": "515c1e0680452925d73ec630c5952feebaf7c91613fe4f801aba5713e48b8d76"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/tarjetas-de-credito/american-express",
+    "title": "Tarjetas de Crédito American Express - Una para cada perfil",
+    "category": "tarjetas_credito",
+    "document_id": "dc6a5ab98da42ec6de6d584031e83f99aa26320d3dcc62944d6571c4c400a904"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva",
+    "title": "Fondos de Inversión Colectiva",
+    "category": "inversiones",
+    "document_id": "c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/bolsillos",
+    "title": "Bolsillos Bancolombia",
+    "category": "cuentas",
+    "document_id": "761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/seguros/asistencias/plan-de-asistencias-igs",
+    "title": "Seguro Plan de Asistencias IGS",
+    "category": "seguros",
+    "document_id": "6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/consumo/crediagil-credito-rotativo",
+    "title": "Crediágil rotativo de Bancolombia",
+    "category": "prestamos",
+    "document_id": "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/seguros/salud-vida/mascotas",
+    "title": "Seguro para Mascotas",
+    "category": "seguros",
+    "document_id": "db6488f24a705a01091b8c65430b2b1f00d9f129ec7da4ca68f94a781ab70edc"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/cuentas",
+    "title": "Cuentas de ahorros y corrientes para personas naturales",
+    "category": "cuentas",
+    "document_id": "177bfec9c9ea223f3c0ad5e053267b4e2bd3f8e55b1f34f93aab2d7ea1f8f312"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/seguros",
+    "title": "Seguros Bancolombia",
+    "category": "seguros",
+    "document_id": "e95c35131b988bebe1e670936c7db9bb5b6e9c6624cb9bd5b42333526c9f91d6"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/cuentas/vivienda/cuenta-afc",
+    "title": "Cuenta de ahorro AFC",
+    "category": "cuentas",
+    "document_id": "d1059a52133bf56d3a6f4a95736aca95ebd30e57262a48a2db323d856eb73456"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/vivienda",
+    "title": "Créditos, hipotecas y leasing de Vivienda Bancolombia",
+    "category": "vivienda",
+    "document_id": "2fffdc0120c5922b6a4dedba9b420d4acc59ac5bb1ce3cb3c957b9d4d8075053"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/cuentas/ahorros-y-corriente/banconautas",
+    "title": "Cuenta de ahorros para niños",
+    "category": "cuentas",
+    "document_id": "381fefe5ec3e234f262b33d290fe33d7873c25a65c7d3729f1926ba854bb041b"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/estudio",
+    "title": "Créditos y seguros para educación | Sufi",
+    "category": "prestamos",
+    "document_id": "a3190c2606656202b5dacf70859e135a2261a2bfc22f10b52296d8b7439a1739"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-vivienda-desde-el-exterior",
+    "title": "Crédito Hipotecario Compra de Vivienda desde el exterior",
+    "category": "vivienda",
+    "document_id": "edf6208a8e5401ba4182c493dc1b77064676b5b587beca5823a99a81125f0282"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/seguros/salud-vida",
+    "title": "Seguros para Vida y Salud",
+    "category": "seguros",
+    "document_id": "9bd0e2a2acec6aa4c608aa2276cf68f51de2ac7ac2c0b5b59632cd608e748ea5"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-remodelar",
+    "title": "Crédito Hipotecario para Remodelación de Vivienda",
+    "category": "vivienda",
+    "document_id": "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/seguros/salud-vida/plan-protege-tu-vida",
+    "title": "Seguro Plan Protege tu Vida",
+    "category": "seguros",
+    "document_id": "3992d2ff595e394e47b2199ca0a68ca452ad9461e3b50539bfa137c477928443"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/negocios",
+    "title": "Créditos para negocios, empresas, pymes y corporaciones",
+    "category": "prestamos",
+    "document_id": "84548535a07bc39fa440be66e395a6ceb5c6116f66e42a400fa2882265e5bd6a"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-construccion",
+    "title": "Crédito Hipotecario para Construcción de Vivienda",
+    "category": "vivienda",
+    "document_id": "bc9efbfbeebdfe4b3fdb582bde59732a9a61654e0dae6dcb0065c95cddfb2981"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/aprender-es-facil/como-manejar-dinero/invertir/en-que-invertir",
+    "title": "Bancolombia Personas",
+    "category": "inversiones",
+    "document_id": "d4539472f16a72dacce255f461fd6256a7e64891ea4f3dc27f5f3b6e2511cfb5"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/creditos/consumo/ampliacion-de-plazo",
+    "title": "Ampliación de Plazo Tarjeta de Crédito y Créditos Bancolombia",
+    "category": "prestamos",
+    "document_id": "392181c62291c6e38acae013762f7f7b0a11f529487b2cec44dfaf6fc5c5a29e"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/inversiones-digitales",
+    "title": "Inversiones digitales",
+    "category": "inversiones",
+    "document_id": "f1829eee71666a03d1eb53d82bd7dbd6f6b84c837e656f9c0327ea7438ed773b"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva/renta-liquidez-dolares",
+    "title": "Fondo Renta Liquidez Dólares",
+    "category": "inversiones",
+    "document_id": "a5f3d4dd4cfaf60ce64cdd428bc7ce57d1305dd61d8e8597b5b1694aca28c76f"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva/renta-acciones-viejo",
+    "title": "Renta Acciones para personas",
+    "category": "inversiones",
+    "document_id": "e809b3e0593c0cc7f3b6743973192668ffcf4364b93d6a01b32dedaf7c37f354"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/renta-fija",
+    "title": "Renta Fija",
+    "category": "inversiones",
+    "document_id": "585d46ff40e9ce7886de1d1d9bbdf1a7e344f5c0e70b65202f542ab342d26186"
+  },
+  {
+    "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva/llamanos",
+    "title": "Llamanos",
+    "category": "inversiones",
+    "document_id": "b3677d944110fcddca6b0e1f0fa3fde6c82ca630f90c63a4cc64e8fa8e752fdc"
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "q001",
+    "question": "¿Qué rendimiento anual ofrece la cuenta de ahorros?",
+    "category": "cuentas",
+    "relevant_chunk_ids": ["7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59"],
+    "answer_evidence": "La cuenta de ahorros indica rendimiento de 0,05% al año.",
+    "source_url": "https://www.bancolombia.com/personas/cuentas/ahorros-y-corriente/cuenta-ahorros"
+  },
+  {
+    "id": "q002",
+    "question": "¿La cuenta de ahorros exige monto mínimo?",
+    "category": "cuentas",
+    "relevant_chunk_ids": ["7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59"],
+    "answer_evidence": "El contenido dice que no necesitas un monto mínimo.",
+    "source_url": "https://www.bancolombia.com/personas/cuentas/ahorros-y-corriente/cuenta-ahorros"
+  },
+  {
+    "id": "q003",
+    "question": "¿Cómo se puede evitar pagar 4x1000 en la cuenta?",
+    "category": "cuentas",
+    "relevant_chunk_ids": ["7de54efb0233429a0b06ee09172267fcab8cd8a60392d664a4ae74a8b6483901:5:019a1d933bf12c59"],
+    "answer_evidence": "La sección de Exención GMF dice que se puede activar que la cuenta no pague 4x1000.",
+    "source_url": "https://www.bancolombia.com/personas/cuentas/ahorros-y-corriente/cuenta-ahorros"
+  },
+  {
+    "id": "q004",
+    "question": "¿Cuántos bolsillos puedo crear en una cuenta de ahorros?",
+    "category": "cuentas",
+    "relevant_chunk_ids": ["761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee:0:c5fa394d38a23fea"],
+    "answer_evidence": "Bolsillos indica hasta 15 por cuenta.",
+    "source_url": "https://www.bancolombia.com/personas/bolsillos"
+  },
+  {
+    "id": "q005",
+    "question": "¿Los bolsillos tienen costo o monto mínimo?",
+    "category": "cuentas",
+    "relevant_chunk_ids": ["761c8876494138efbee40ed301e46a92cafba436f8972a31be94ce74ba83fbee:0:c5fa394d38a23fea"],
+    "answer_evidence": "El texto dice que se crean o eliminan sin monto mínimo y sin costos adicionales.",
+    "source_url": "https://www.bancolombia.com/personas/bolsillos"
+  },
+  {
+    "id": "q006",
+    "question": "¿Qué beneficio tiene el abono automático para colombianos en el exterior?",
+    "category": "cuentas",
+    "relevant_chunk_ids": ["a3d097a0acda30e2a5e8361196d52b1f2ed0c0a7242fde7af29f58233401303b:0:8c529fd10ebfe4af"],
+    "answer_evidence": "Permite transferir de otras monedas a pesos colombianos y recibir en la cuenta sin aprobaciones previas.",
+    "source_url": "https://www.bancolombia.com/personas/cuentas/desde-el-exterior/cuenta-colombianos-en-el-exterior"
+  },
+  {
+    "id": "q007",
+    "question": "¿Qué beneficios de viaje ofrece la Visa Infinite?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": ["b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:0:1c65ed900bb6759a"],
+    "answer_evidence": "Visa Infinite ofrece Priority Pass, salas VIP Avianca, asistencia en viajes internacionales y concierge.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/visa/infinite"
+  },
+  {
+    "id": "q008",
+    "question": "¿Qué ingresos se necesitan para pedir Visa Infinite?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": ["b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:0:1c65ed900bb6759a", "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:1:8ae405cb3d9a615c"],
+    "answer_evidence": "La tarjeta Visa Infinite requiere ingresos superiores a $5 millones.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/visa/infinite"
+  },
+  {
+    "id": "q009",
+    "question": "¿Cuál es el cupo de la tarjeta Joven Mastercard?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": ["9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:1:26baa105d0d5dbce"],
+    "answer_evidence": "La tarjeta Joven Mastercard indica cupo entre $200 mil y $5 millones.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard/joven"
+  },
+  {
+    "id": "q010",
+    "question": "¿Qué edad aplica para la tarjeta de crédito Joven?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": ["9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:0:fbeeac01033e7d54", "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:1:26baa105d0d5dbce"],
+    "answer_evidence": "La tarjeta Joven requiere edad entre 14 y 25 años.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard/joven"
+  },
+  {
+    "id": "q011",
+    "question": "¿Qué bono de bienvenida da la Visa Avianca Lifemiles?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": ["18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:0:d10a624016686a6e"],
+    "answer_evidence": "Visa Avianca Lifemiles ofrece 7.500 millas si se factura $7.500.000 durante los primeros 6 meses.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/visa/lifemiles"
+  },
+  {
+    "id": "q012",
+    "question": "¿Cuántas entradas VIP anuales ofrece la Visa Avianca Lifemiles?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": ["18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:0:d10a624016686a6e", "18bc4b8cbe2838d6c506981494eeff6db3848f5e8eb1fa2b3c9ec007d4f9845d:1:ab8d105f64a3734c"],
+    "answer_evidence": "El contenido indica 2 entradas anuales por tarjetahabiente a Avianca Lounges Gold en Colombia.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/visa/lifemiles"
+  },
+  {
+    "id": "q013",
+    "question": "¿Qué cuota de manejo tiene la Mastercard Oro después de los primeros meses?",
+    "category": "tarjetas_credito",
+    "relevant_chunk_ids": ["995361bf06a780544024dca7c781e3d2210e51b64cf69e8c5144da17a450faf4:1:94a5abe58def3582"],
+    "answer_evidence": "Después de 5 meses, la cuota de manejo de Mastercard Oro es $36.990 mensuales.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard/oro"
+  },
+  {
+    "id": "q014",
+    "question": "¿Cómo se crea una tarjeta débito virtual?",
+    "category": "tarjetas_debito",
+    "relevant_chunk_ids": ["1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:0:d16562595055b6e8"],
+    "answer_evidence": "La tarjeta virtual se crea en la app Mi Bancolombia desde Conoce más de tu cuenta, Plan y Créala sin costo.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar"
+  },
+  {
+    "id": "q015",
+    "question": "¿Qué cobertura de protección de compras tienen las tarjetas débito?",
+    "category": "tarjetas_debito",
+    "relevant_chunk_ids": ["1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:1:c17f77f85cdd1634"],
+    "answer_evidence": "La protección de compras cubre por 45 días hasta 100 USD si no llega la compra.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar"
+  },
+  {
+    "id": "q016",
+    "question": "¿Qué ofrece la Mastercard Black débito?",
+    "category": "tarjetas_debito",
+    "relevant_chunk_ids": ["1d2cc56f1a6d8aced006d4257492c428aa38e3ba29f17629f3aab30aec80fa8e:2:ae3f0a21c0fd5f6f"],
+    "answer_evidence": "Mastercard Black débito incluye asistencia concierge para reservas y cubrimiento de varios seguros.",
+    "source_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar"
+  },
+  {
+    "id": "q017",
+    "question": "¿Qué permite hacer la compra de cartera?",
+    "category": "prestamos",
+    "relevant_chunk_ids": ["5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:0:45bcdb151337a359"],
+    "answer_evidence": "Permite traer deudas de otros bancos y pagarlas en un solo lugar.",
+    "source_url": "https://www.bancolombia.com/personas/creditos/consumo/compra-cartera"
+  },
+  {
+    "id": "q018",
+    "question": "¿Qué plazos maneja la compra de cartera?",
+    "category": "prestamos",
+    "relevant_chunk_ids": ["5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:1:3110765748756d15"],
+    "answer_evidence": "La compra de cartera ofrece hasta 60 meses con tarjeta y 84 meses con libre inversión o libranza.",
+    "source_url": "https://www.bancolombia.com/personas/creditos/consumo/compra-cartera"
+  },
+  {
+    "id": "q019",
+    "question": "¿Qué requisito de ingresos tiene Crediágil?",
+    "category": "prestamos",
+    "relevant_chunk_ids": ["40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:0:bcd3f33203bb0978", "40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:1:8e0e359b69dcc35e"],
+    "answer_evidence": "Crediágil exige ingresos desde 2 salarios mínimos mensuales.",
+    "source_url": "https://www.bancolombia.com/personas/creditos/consumo/crediagil-credito-rotativo"
+  },
+  {
+    "id": "q020",
+    "question": "¿Desde qué monto puedo usar un desembolso de Crediágil?",
+    "category": "prestamos",
+    "relevant_chunk_ids": ["40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:1:8e0e359b69dcc35e"],
+    "answer_evidence": "Crediágil permite usar desde $100.000 del cupo aprobado.",
+    "source_url": "https://www.bancolombia.com/personas/creditos/consumo/crediagil-credito-rotativo"
+  },
+  {
+    "id": "q021",
+    "question": "¿Qué tasa tiene Crediágil por cada desembolso?",
+    "category": "prestamos",
+    "relevant_chunk_ids": ["40005783221626d90bb8bb8076263904c24e3e1e98499534b27dd36a5153d253:2:2f06eb9fb6f59737"],
+    "answer_evidence": "La tasa fija por desembolso indica interés mensual 1,80% - 2,13% y efectivo anual 23,87% - 28,77%.",
+    "source_url": "https://www.bancolombia.com/personas/creditos/consumo/crediagil-credito-rotativo"
+  },
+  {
+    "id": "q022",
+    "question": "¿Qué opciones de vivienda aparecen para remodelar o construir?",
+    "category": "vivienda",
+    "relevant_chunk_ids": ["2fffdc0120c5922b6a4dedba9b420d4acc59ac5bb1ce3cb3c957b9d4d8075053:1:a0557188baccd873"],
+    "answer_evidence": "El chunk menciona crédito hipotecario para remodelación y crédito hipotecario para construcción de vivienda.",
+    "source_url": "https://www.bancolombia.com/personas/creditos/vivienda"
+  },
+  {
+    "id": "q023",
+    "question": "¿Qué ingresos mínimos exige el crédito para construcción de vivienda?",
+    "category": "vivienda",
+    "relevant_chunk_ids": ["bc9efbfbeebdfe4b3fdb582bde59732a9a61654e0dae6dcb0065c95cddfb2981:2:590685bbdc36991d"],
+    "answer_evidence": "El crédito para construcción exige ingresos del deudor principal mínimo 2 SMMLV.",
+    "source_url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-construccion"
+  },
+  {
+    "id": "q024",
+    "question": "¿Qué modificaciones se pueden pedir sobre un crédito hipotecario de construcción?",
+    "category": "vivienda",
+    "relevant_chunk_ids": ["bc9efbfbeebdfe4b3fdb582bde59732a9a61654e0dae6dcb0065c95cddfb2981:2:590685bbdc36991d"],
+    "answer_evidence": "Se pueden solicitar ampliación o disminución de plazo, cambio de modalidad, recálculo de cuota o plazo, cambio de día de pago y modificación de débito automático.",
+    "source_url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-construccion"
+  },
+  {
+    "id": "q025",
+    "question": "¿Qué asistencias incluye el Plan de Asistencias IGS?",
+    "category": "seguros",
+    "relevant_chunk_ids": ["6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389:0:af5e2cdb1cf4ac5e"],
+    "answer_evidence": "El plan incluye asistencia médica, al adulto mayor, veterinaria, bicicletas y electrodomésticos.",
+    "source_url": "https://www.bancolombia.com/personas/seguros/asistencias/plan-de-asistencias-igs"
+  },
+  {
+    "id": "q026",
+    "question": "¿Cuánto cuesta mensualmente el Plan de Asistencias IGS?",
+    "category": "seguros",
+    "relevant_chunk_ids": ["6fd9df63f2d56fc2268cdfb5f83a47f5df2b87bd75bad9e63f2b717c9e1ea389:1:f683ee890954fbea"],
+    "answer_evidence": "El plan muestra tarifa mensual sin IVA $31.000 y con IVA $36.890.",
+    "source_url": "https://www.bancolombia.com/personas/seguros/asistencias/plan-de-asistencias-igs"
+  },
+  {
+    "id": "q027",
+    "question": "¿Qué cubre el Seguro de Desempleo para Libranza?",
+    "category": "seguros",
+    "relevant_chunk_ids": ["926a09faeb6deba47f5827e819ecf1f8f5f85298599d7c903a5b01dea9ed9342:0:9cf73e845e5fc51e"],
+    "answer_evidence": "Protege cuotas del crédito de libranza ante desempleo involuntario, enfermedad grave e incapacidad temporal.",
+    "source_url": "https://www.bancolombia.com/personas/seguros/seguros-no-comercializados/cardif"
+  },
+  {
+    "id": "q028",
+    "question": "¿Qué tipos de fondos de inversión colectiva se mencionan?",
+    "category": "inversiones",
+    "relevant_chunk_ids": ["c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0:0:324a8ce276f52b5a"],
+    "answer_evidence": "Se mencionan fondos renta fija, balanceados, renta variable y alternativos o inmobiliarios.",
+    "source_url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva"
+  },
+  {
+    "id": "q029",
+    "question": "¿Para qué sirve Plan Semilla?",
+    "category": "inversiones",
+    "relevant_chunk_ids": ["c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0:1:909cfb494124d177"],
+    "answer_evidence": "Plan Semilla permite ahorrar, invertir y aumentar ingresos para cumplir metas a mediano y largo plazo.",
+    "source_url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva"
+  },
+  {
+    "id": "q030",
+    "question": "¿Cuál es el monto mínimo para invertir en Fondo Renta Liquidez Dólares?",
+    "category": "inversiones",
+    "relevant_chunk_ids": ["a5f3d4dd4cfaf60ce64cdd428bc7ce57d1305dd61d8e8597b5b1694aca28c76f:0:b8e4f4e371c67678"],
+    "answer_evidence": "Fondo Renta Liquidez Dólares indica monto mínimo de $50.000.",
+    "source_url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva/renta-liquidez-dolares"
+  }
+]

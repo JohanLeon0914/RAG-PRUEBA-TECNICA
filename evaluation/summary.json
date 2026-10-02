@@ -1,0 +1,334 @@
+{
+  "timestamp": "2026-10-02T12:14:30.150880+00:00",
+  "corpus_fingerprint": "39e78243ffb22ad50244f76059fcc9ce0213995828add0dfdcb85622054fe23c",
+  "number_of_documents": 40,
+  "number_of_chunks": 233,
+  "chunk_size": 900,
+  "chunk_overlap": 150,
+  "dataset_size": 30,
+  "dataset_distribution": {
+    "cuentas": 6,
+    "inversiones": 3,
+    "prestamos": 5,
+    "seguros": 3,
+    "tarjetas_credito": 7,
+    "tarjetas_debito": 3,
+    "vivienda": 3
+  },
+  "experiments": {
+    "bge": {
+      "provider": "bge",
+      "model": "BAAI/bge-m3",
+      "collection": "bancolombia_eval_bge_m3",
+      "dimension": 1024,
+      "distance": "Cosine",
+      "points": 233,
+      "model_load_time": 5.5283,
+      "warmup_time": 0.0989,
+      "metrics": {
+        "hit_at_1": 0.6,
+        "hit_at_3": 0.7667,
+        "hit_at_5": 0.8,
+        "mrr": 0.6806,
+        "mean_embedding_latency": 0.0935,
+        "median_embedding_latency": 0.093,
+        "mean_search_latency": 0.0031,
+        "median_search_latency": 0.003
+      },
+      "metrics_by_category": {
+        "cuentas": {
+          "n": 6,
+          "hit_at_1": 0.6667,
+          "hit_at_3": 0.8333,
+          "hit_at_5": 0.8333,
+          "mrr": 0.7222,
+          "mean_embedding_latency": 0.0913,
+          "median_embedding_latency": 0.0912,
+          "mean_search_latency": 0.0032,
+          "median_search_latency": 0.0031
+        },
+        "inversiones": {
+          "n": 3,
+          "hit_at_1": 0.6667,
+          "hit_at_3": 1.0,
+          "hit_at_5": 1.0,
+          "mrr": 0.8333,
+          "mean_embedding_latency": 0.0983,
+          "median_embedding_latency": 0.0989,
+          "mean_search_latency": 0.003,
+          "median_search_latency": 0.0031
+        },
+        "prestamos": {
+          "n": 5,
+          "hit_at_1": 0.8,
+          "hit_at_3": 0.8,
+          "hit_at_5": 0.8,
+          "mrr": 0.8,
+          "mean_embedding_latency": 0.0918,
+          "median_embedding_latency": 0.0924,
+          "mean_search_latency": 0.003,
+          "median_search_latency": 0.003
+        },
+        "seguros": {
+          "n": 3,
+          "hit_at_1": 0.6667,
+          "hit_at_3": 0.6667,
+          "hit_at_5": 0.6667,
+          "mrr": 0.6667,
+          "mean_embedding_latency": 0.0974,
+          "median_embedding_latency": 0.0957,
+          "mean_search_latency": 0.003,
+          "median_search_latency": 0.003
+        },
+        "tarjetas_credito": {
+          "n": 7,
+          "hit_at_1": 0.5714,
+          "hit_at_3": 0.7143,
+          "hit_at_5": 0.7143,
+          "mrr": 0.6429,
+          "mean_embedding_latency": 0.0911,
+          "median_embedding_latency": 0.0906,
+          "mean_search_latency": 0.0031,
+          "median_search_latency": 0.0032
+        },
+        "tarjetas_debito": {
+          "n": 3,
+          "hit_at_1": 0.6667,
+          "hit_at_3": 0.6667,
+          "hit_at_5": 0.6667,
+          "mrr": 0.6667,
+          "mean_embedding_latency": 0.097,
+          "median_embedding_latency": 0.1,
+          "mean_search_latency": 0.0029,
+          "median_search_latency": 0.0029
+        },
+        "vivienda": {
+          "n": 3,
+          "hit_at_1": 0.0,
+          "hit_at_3": 0.6667,
+          "hit_at_5": 1.0,
+          "mrr": 0.3611,
+          "mean_embedding_latency": 0.0941,
+          "median_embedding_latency": 0.0941,
+          "mean_search_latency": 0.003,
+          "median_search_latency": 0.003
+        }
+      }
+    },
+    "gte": {
+      "provider": "gte",
+      "model": "Alibaba-NLP/gte-multilingual-base",
+      "collection": "bancolombia_eval_gte_multilingual",
+      "dimension": 768,
+      "distance": "Cosine",
+      "points": 233,
+      "model_load_time": 3.4029,
+      "warmup_time": 0.0537,
+      "metrics": {
+        "hit_at_1": 0.4333,
+        "hit_at_3": 0.6,
+        "hit_at_5": 0.7333,
+        "mrr": 0.5411,
+        "mean_embedding_latency": 0.0554,
+        "median_embedding_latency": 0.0518,
+        "mean_search_latency": 0.0031,
+        "median_search_latency": 0.0029
+      },
+      "metrics_by_category": {
+        "cuentas": {
+          "n": 6,
+          "hit_at_1": 0.6667,
+          "hit_at_3": 0.8333,
+          "hit_at_5": 1.0,
+          "mrr": 0.7917,
+          "mean_embedding_latency": 0.0717,
+          "median_embedding_latency": 0.0695,
+          "mean_search_latency": 0.0038,
+          "median_search_latency": 0.0031
+        },
+        "inversiones": {
+          "n": 3,
+          "hit_at_1": 0.3333,
+          "hit_at_3": 0.3333,
+          "hit_at_5": 0.6667,
+          "mrr": 0.4167,
+          "mean_embedding_latency": 0.05,
+          "median_embedding_latency": 0.05,
+          "mean_search_latency": 0.0027,
+          "median_search_latency": 0.0027
+        },
+        "prestamos": {
+          "n": 5,
+          "hit_at_1": 0.4,
+          "hit_at_3": 0.8,
+          "hit_at_5": 1.0,
+          "mrr": 0.64,
+          "mean_embedding_latency": 0.0509,
+          "median_embedding_latency": 0.0508,
+          "mean_search_latency": 0.0028,
+          "median_search_latency": 0.0028
+        },
+        "seguros": {
+          "n": 3,
+          "hit_at_1": 0.6667,
+          "hit_at_3": 0.6667,
+          "hit_at_5": 0.6667,
+          "mrr": 0.6667,
+          "mean_embedding_latency": 0.0516,
+          "median_embedding_latency": 0.0522,
+          "mean_search_latency": 0.0029,
+          "median_search_latency": 0.0029
+        },
+        "tarjetas_credito": {
+          "n": 7,
+          "hit_at_1": 0.4286,
+          "hit_at_3": 0.5714,
+          "hit_at_5": 0.7143,
+          "mrr": 0.5048,
+          "mean_embedding_latency": 0.0524,
+          "median_embedding_latency": 0.0521,
+          "mean_search_latency": 0.003,
+          "median_search_latency": 0.003
+        },
+        "tarjetas_debito": {
+          "n": 3,
+          "hit_at_1": 0.3333,
+          "hit_at_3": 0.6667,
+          "hit_at_5": 0.6667,
+          "mrr": 0.5,
+          "mean_embedding_latency": 0.0511,
+          "median_embedding_latency": 0.0516,
+          "mean_search_latency": 0.0029,
+          "median_search_latency": 0.0029
+        },
+        "vivienda": {
+          "n": 3,
+          "hit_at_1": 0.0,
+          "hit_at_3": 0.0,
+          "hit_at_5": 0.0,
+          "mrr": 0.0,
+          "mean_embedding_latency": 0.0508,
+          "median_embedding_latency": 0.0512,
+          "mean_search_latency": 0.0028,
+          "median_search_latency": 0.0028
+        }
+      }
+    }
+  },
+  "comparison": {
+    "both_top_1": [
+      "q003",
+      "q004",
+      "q005",
+      "q006",
+      "q008",
+      "q011",
+      "q012",
+      "q016",
+      "q017",
+      "q021",
+      "q025",
+      "q027",
+      "q030"
+    ],
+    "bge_better": [
+      "q007",
+      "q010",
+      "q014",
+      "q019",
+      "q020",
+      "q022",
+      "q023",
+      "q024",
+      "q028",
+      "q029"
+    ],
+    "gte_better": [
+      "q001",
+      "q002",
+      "q018"
+    ],
+    "neither_hit_5": [
+      "q009",
+      "q013",
+      "q015",
+      "q026"
+    ]
+  },
+  "out_of_domain": {
+    "bge": [
+      {
+        "query": "¿Cuál es la capital de Japón?",
+        "top_score": 0.31726298,
+        "top_chunk_id": "c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0:2:17349c95e26c451a",
+        "top_title": "Fondos de Inversión Colectiva",
+        "top_url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva"
+      },
+      {
+        "query": "¿Cómo preparo una lasaña vegetariana?",
+        "top_score": 0.3473076,
+        "top_chunk_id": "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:2:006774e9aa5ad6e1",
+        "top_title": "Tarjetas de Crédito Bancolombia | Pensadas para ti",
+        "top_url": "https://www.bancolombia.com/personas/tarjetas-de-credito"
+      },
+      {
+        "query": "¿Qué es una función lambda en Python?",
+        "top_score": 0.38726676,
+        "top_chunk_id": "585d46ff40e9ce7886de1d1d9bbdf1a7e344f5c0e70b65202f542ab342d26186:0:e510cdc6f7bc7508",
+        "top_title": "Renta Fija",
+        "top_url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/renta-fija"
+      },
+      {
+        "query": "¿Quién ganó el mundial de fútbol de 2014?",
+        "top_score": 0.3575548,
+        "top_chunk_id": "d4539472f16a72dacce255f461fd6256a7e64891ea4f3dc27f5f3b6e2511cfb5:0:939aae0534bbb6fb",
+        "top_title": "Bancolombia Personas",
+        "top_url": "https://www.bancolombia.com/personas/aprender-es-facil/como-manejar-dinero/invertir/en-que-invertir"
+      },
+      {
+        "query": "¿Cómo se calcula la órbita de Marte?",
+        "top_score": 0.42667526,
+        "top_chunk_id": "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:1:26baa105d0d5dbce",
+        "top_title": "Tarjeta de Crédito Joven MasterCard - Obtén vida crediticia",
+        "top_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard/joven"
+      }
+    ],
+    "gte": [
+      {
+        "query": "¿Cuál es la capital de Japón?",
+        "top_score": 0.42166606,
+        "top_chunk_id": "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:3:4e38ac8719953ccd",
+        "top_title": "Crédito Hipotecario para Remodelación de Vivienda",
+        "top_url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-remodelar"
+      },
+      {
+        "query": "¿Cómo preparo una lasaña vegetariana?",
+        "top_score": 0.53576976,
+        "top_chunk_id": "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+        "top_title": "Unifica tus deudas con la compra de cartera de Bancolombia",
+        "top_url": "https://www.bancolombia.com/personas/creditos/consumo/compra-cartera"
+      },
+      {
+        "query": "¿Qué es una función lambda en Python?",
+        "top_score": 0.45990428,
+        "top_chunk_id": "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:8:1f1082234f0132c8",
+        "top_title": "Crédito Hipotecario para Remodelación de Vivienda",
+        "top_url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-remodelar"
+      },
+      {
+        "query": "¿Quién ganó el mundial de fútbol de 2014?",
+        "top_score": 0.46494538,
+        "top_chunk_id": "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:1:8ae405cb3d9a615c",
+        "top_title": "Tarjetas de crédito Visa Infinite - Bancolombia",
+        "top_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/visa/infinite"
+      },
+      {
+        "query": "¿Cómo se calcula la órbita de Marte?",
+        "top_score": 0.48583448,
+        "top_chunk_id": "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:2:d837f162fe56366e",
+        "top_title": "Crédito Hipotecario para Remodelación de Vivienda",
+        "top_url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-remodelar"
+      }
+    ]
+  }
+}

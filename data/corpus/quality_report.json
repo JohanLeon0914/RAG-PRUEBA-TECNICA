@@ -1,0 +1,280 @@
+{
+  "sitemap_url": "https://www.bancolombia.com/sitemap-personas.xml",
+  "sitemap_urls_found": 440,
+  "candidate_urls_found": 185,
+  "selected_urls": 56,
+  "pages_requested": 56,
+  "raw_documents": 56,
+  "processed_documents": 40,
+  "distribution_by_category": {
+    "cuentas": 7,
+    "inversiones": 7,
+    "prestamos": 7,
+    "seguros": 6,
+    "tarjetas_credito": 8,
+    "tarjetas_debito": 1,
+    "vivienda": 4
+  },
+  "document_size_stats": {
+    "min": 1312,
+    "max": 11048,
+    "avg": 3944.53,
+    "median": 2691.0
+  },
+  "suspicious_small_documents": [],
+  "chunks_total": 233,
+  "chunk_size_stats": {
+    "min": 178,
+    "max": 900,
+    "avg": 797.82,
+    "median": 865
+  },
+  "scrape_errors": [],
+  "scrape_duplicate_urls": [],
+  "processing_discards": [
+    {
+      "url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-comprar-vivienda",
+      "title": "Crédito de Vivienda - Bancolombia",
+      "reason": "empty_after_cleaning"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito",
+      "title": "Tarjetas Débito para persona natural",
+      "reason": "exact_clean_content_duplicate"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/creditos/vehiculo",
+      "title": "Crédito para carro nuevo o usado, ¡el que quieras! Créditos para Vehículos",
+      "reason": "clean_content_too_small",
+      "size": "138"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/creditos/vivienda/leasing-habitacional",
+      "title": "Leasing habitacional para vivienda - Bancolombia",
+      "reason": "empty_after_cleaning"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/black",
+      "title": "Tarjetas Débito para persona natural",
+      "reason": "exact_clean_content_duplicate"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/transporte",
+      "title": "Tarjetas Débito para persona natural",
+      "reason": "exact_clean_content_duplicate"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/banconautas",
+      "title": "Tarjetas Débito para persona natural",
+      "reason": "exact_clean_content_duplicate"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/cuentas/desde-el-exterior",
+      "title": "Cuenta de ahorros para Colombianos en el extranjero",
+      "reason": "exact_clean_content_duplicate"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/seguros/salud-vida/plan-vida-a-la-medida",
+      "title": "Seguro Plan Vida a la Medida",
+      "reason": "clean_content_too_small",
+      "size": "130"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/creditos/vivienda/compra-de-cartera-de-credito-hipotecario",
+      "title": "Compra de cartera Crédito Hipotecario Bancolombia",
+      "reason": "clean_content_too_small",
+      "size": "142"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/vivienda",
+      "title": "Vivienda Bancolombia - Obtén la casa de tus sueños",
+      "reason": "clean_content_too_small",
+      "size": "98"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/clasica",
+      "title": "Tarjetas Débito para persona natural",
+      "reason": "exact_clean_content_duplicate"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/seguros/salud-vida/odontologico",
+      "title": "Seguro Plan Odontológico",
+      "reason": "clean_content_too_small",
+      "size": "218"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/amparada",
+      "title": "Tarjetas Débito para persona natural",
+      "reason": "exact_clean_content_duplicate"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/preferencial",
+      "title": "Tarjetas Débito para persona natural",
+      "reason": "exact_clean_content_duplicate"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva/movil-aplicacion-fondos",
+      "title": "Bancolombia Personas",
+      "reason": "exact_clean_content_duplicate"
+    }
+  ],
+  "exact_duplicates": [
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito",
+      "title": "Tarjetas Débito para persona natural",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+      "content_hash": "c13384e24097aa7e66f543e9e94cc67fcb7781f9d1db15f63a0b9ba6ca3a9616"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/black",
+      "title": "Tarjetas Débito para persona natural",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+      "content_hash": "c13384e24097aa7e66f543e9e94cc67fcb7781f9d1db15f63a0b9ba6ca3a9616"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/transporte",
+      "title": "Tarjetas Débito para persona natural",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+      "content_hash": "c13384e24097aa7e66f543e9e94cc67fcb7781f9d1db15f63a0b9ba6ca3a9616"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/banconautas",
+      "title": "Tarjetas Débito para persona natural",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+      "content_hash": "c13384e24097aa7e66f543e9e94cc67fcb7781f9d1db15f63a0b9ba6ca3a9616"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/cuentas/desde-el-exterior",
+      "title": "Cuenta de ahorros para Colombianos en el extranjero",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/cuentas/desde-el-exterior/cuenta-colombianos-en-el-exterior",
+      "content_hash": "2d157ab8db17a3c9b541ab09f4bbfd626f96f399ebb8093af3de2fa8aedddae0"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/clasica",
+      "title": "Tarjetas Débito para persona natural",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+      "content_hash": "c13384e24097aa7e66f543e9e94cc67fcb7781f9d1db15f63a0b9ba6ca3a9616"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/amparada",
+      "title": "Tarjetas Débito para persona natural",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+      "content_hash": "c13384e24097aa7e66f543e9e94cc67fcb7781f9d1db15f63a0b9ba6ca3a9616"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/preferencial",
+      "title": "Tarjetas Débito para persona natural",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+      "content_hash": "c13384e24097aa7e66f543e9e94cc67fcb7781f9d1db15f63a0b9ba6ca3a9616"
+    },
+    {
+      "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva/movil-aplicacion-fondos",
+      "title": "Bancolombia Personas",
+      "duplicate_of_url": "https://www.bancolombia.com/personas/aprender-es-facil/como-manejar-dinero/invertir/en-que-invertir",
+      "content_hash": "068ad56e6d30dd039ff1ce6123fc48a4e5f4967062f8dc169ef9fa815b036236"
+    }
+  ],
+  "selection_discard_summary": {
+    "category_not_supported": 97,
+    "category_limit:seguros": 54,
+    "category_limit:tarjetas_credito": 25,
+    "excluded_pattern:*/simulador*": 22,
+    "excluded_pattern:*/pagos/*": 17,
+    "category_limit:cuentas": 16,
+    "category_limit:inversiones": 16,
+    "excluded_pattern:*/necesidades/*": 15,
+    "excluded_pattern:*/beneficios/*": 14,
+    "excluded_pattern:*/seguridad/*": 13,
+    "excluded_pattern:*/eventos/*": 12,
+    "category_limit:prestamos": 11,
+    "excluded_pattern:*/documentos-legales/*": 9,
+    "excluded_pattern:*/referido*": 8,
+    "excluded_pattern:*/canales-servicio/*": 8,
+    "excluded_pattern:*/solicitud-de-productos*": 7,
+    "excluded_pattern:*/giros/*": 6,
+    "excluded_pattern:*/ofertas*": 5,
+    "category_limit:tarjetas_debito": 5,
+    "excluded_pattern:*/contactanos*": 4,
+    "excluded_pattern:*/src/*": 4,
+    "excluded_pattern:*/app-bancolombia/*": 4,
+    "excluded_pattern:*/tarifario*": 2,
+    "excluded_pattern:*/preaprobados*": 2,
+    "category_limit:vivienda": 2,
+    "excluded_pattern:*/calculadora*": 2,
+    "excluded_pattern:/personas": 1,
+    "excluded_pattern:*/login*": 1,
+    "excluded_pattern:*/mapa-sitio*": 1,
+    "excluded_pattern:*/formulario*": 1
+  },
+  "selection_policy": {
+    "source": "sitemap-personas.xml",
+    "per_category_limit": 8,
+    "max_total_urls": 56,
+    "min_useful_content_chars": 500,
+    "home_excluded_reason": "La home se usa como navegacion/descubrimiento y tiene menor densidad de conocimiento especifico de producto que las paginas de producto."
+  },
+  "representative_samples": [
+    {
+      "category": "cuentas",
+      "title": "Cuenta de ahorros Bancolombia",
+      "url": "https://www.bancolombia.com/personas/cuentas/ahorros-y-corriente/cuenta-ahorros",
+      "start": "Cuentas\nAhorros\nÁbrela en minutos, úsala de una\nCuenta de ahorros\nEmpieza con planes desde $0. Impulsa tus metas, ahorra, invierte y consigue créditos a tu medida. Todo desde tu celular.\nAbrir mi cuenta\nCambiar mi plan\nElegida por más de 13 millones de personas en Colombia. Sigues tú\nTienes más de 33.000 cajeros y corresponsales a tu alcance, mueve tu plata fácil y rápido.\nMás tranquilidad para ti, más opciones para tu bolsillo.\nHaz todo desde un",
+      "middle": "\nsin costo al mes, entre cajeros y corresponsales.\nEl más completo\nPlan Oro:\nPrecio estándar: $15.900 al mes\nCon descuento: $7.950\nPerfecto si quieres tenerlo todo. Retiros ilimitados en cajeros y corresponsales. Y 3 transferencias sin llaves Bre-B a otros bancos.\nCompara los detalles de cada plan\nCámbiate de plan cada 30 días para probar y encontrar el ideal para ti.\n$0 - al mes\nDetalle\nPlan Bronce\nPlan Plata\nPlan Oro\n¿Cómo obtener el descuento?",
+      "end": "ecuentes\nTasas y tarifas\nRendimiento\nTu plata gana 0,05% al año\nAbono de intereses\nVes el interés cuando se registra el movimiento\nRestricción de saldo\nNo necesitas un monto mínimo\nLiquidación\nTu interés se suma día a día\nRetención\nAplicamos 7% de retención (por ley)\nExención GMF\nPuedes activar que esta cuenta no pague 4x1000.\nNota: Las tasas representan el rendimiento nominal anual. Aplican condiciones del tarifario vigente.\nTarifario\nDocumentos"
+    },
+    {
+      "category": "inversiones",
+      "title": "Fondos de Inversión Colectiva",
+      "url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva",
+      "start": "Valores Bancolombia\nFondos de inversión colectiva\nDescubre las alternativas que tenemos para acompañarte a invertir. Encuentra la solución que más se parezca a ti y tu perfil.\nNuestros fondos de inversión\nDescubre más sobre cada opción para rentabilizar tus ahorros.\nFondos renta fija\nFondos balanceados\nFondos renta variable\nFondos alternativos o inmobiliarios\nRenta fija VIII\nDiversifica tu portafolio de inversión a través de la exposición en acti",
+      "middle": "horra, invierte y aumenta tus ingresos todo en un solo lugar. Cumple tus metas al mediano y largo plazo.\nFondo renta liquidez\nEmpieza a invertir con un monto mínimo. Transforma tus ahorros en capital.\nFondo renta fija plus\nInvierte tu capital en el corto plazo, con una alternativa de alto riesgo en renta fija.\nFiducuenta Dólares\nInvierte en títulos de renta fija en dólares por medio de fondos, ETFs o derivados, asume un riesgo moderado con protec",
+      "end": "llín, Colombia\nTambién te puede interesar\nFondo de renta balanceado\nAlcanza tus metas y objetivos con activos de renta fija, variable y otros del mercado local e internacional.\nDescubre el fondo\nAcciones\nInvierte en activos de diferentes emisores nacionales e internacionales sin tener una cuenta en el exterior.\nDescubre acciones\nFuturos\nAsegura el precio de compra o venta de un activo y protege tu inversión desde que la negocias.\nDescubre futuros"
+    },
+    {
+      "category": "prestamos",
+      "title": "Crédito de libre inversión para equipar tu hogar o viajar",
+      "url": "https://www.bancolombia.com/personas/creditos/consumo/credito-libre-inversion",
+      "start": "Tu360\nBlog\nTransparencia\nConsumidor\nCrédito de libre inversión para equipar tu hogar o viajar\nPersonas\nCréditos\nConsumo\nLibre Inversión\nConoce sobre tu puntaje crediticio aquí\nBanner libre inversión\nCrédito de Libre Inversión\nEstudia, remodela, emprende y más, con tu crédito libre inversión\nPídelo y aprovecha las tasas bajas. Da el siguiente paso, recíbelo de una.\nLo quiero\nIr al simulador\nContenedor principal\nBeneficios para ti\nMás que razones, ",
+      "middle": "ro por internet o en una sucursal física, donde un asesor te ayudará con el proceso.\nBanner simula cuotas libre inversion\nSimula las cuotas\nInfórmate y toma la mejor decisión.\nTasas tarifas libre inversión\nTasas\nConoce las diferentes tasas que puede tener tu crédito.\nTen en cuenta:\nEstas tasas son informativas, pueden cambiar según las condiciones económicas del mercado.\nSi la tasa del crédito es variable, los intereses pueden aumentar o disminui",
+      "end": "pciones tengo para modificar mi crédito?\nPara un\ntienes la posibilidad de cambiar el día de pago, tu cuota por un abono a capital, disminuir tu tasa fija o variable, ampliar el plazo, hacer prorrogas y afiliar o no el débito automático para pagar tus cuotas.\n¿Dónde puedo pedir estos cambios?\nTienes varias opciones, según el tipo de mantenimiento que quieras hacer, llámanos a la Sucursal Telefónica\n01 8000 9 12345\no visítanos en nuestras oficinas."
+    },
+    {
+      "category": "seguros",
+      "title": "Cardif",
+      "url": "https://www.bancolombia.com/personas/seguros/seguros-no-comercializados/cardif",
+      "start": "Tu360\nBlog\nTransparencia\nConsumidor\nPersonas\nseguros\nSeguros no comercializados\nCardif\nSeguros y asistencias que ya no comercializamos\nConoce aquí todas las condiciones y exclusiones de los productos con los que cuentas actualmente, pero que ya no comercializamos.\nSura\nIKE\nGlobal\nIGS\nMok\nMundial\nPan-American Life\nSeguro de Desempleo para Libranza\nCuotas del crédito de libranza protegidas ante eventos inesperados como el desempleo involuntario o e",
+      "middle": "d Temporal para Tarjeta de Crédito Mensual_ Telemarketing_2018\nCobertura Integral Cuentas_Telemarketing\nLas compras, retiros y transacciones realizadas con tarjetas de crédito o cuentas, están protegidas ante eventualidades como hurto calificado.\nCobertura Integral Tarjeta de Crédito_Telemarketing\nCobertura Integral_Red de Sucursales\nSeguro de Desempleo o Incapacidad Temporal para Hipotecario\nGarantiza el pago oportuno de las cuotas de el crédito",
+      "end": "\nGarantiza el pago de la cuota de tu tarjeta de crédito, aun si pierdes tu empleo o te diagnostican una enfermedad.\nGarantiza el pago de la cuota de la tarjeta de crédito, aun si pierdes tus ingresos como trabajador independiente o te diagnostican una enfermedad.\nProtección Cáncer para tarjetas de crédito y cuentas\nProtegerte a ti y a tu familia es nuestra prioridad, con protección cáncer te acompañamos en esos momentos difíciles.\nVER MÁS SEGUROS"
+    },
+    {
+      "category": "tarjetas_credito",
+      "title": "Tarjetas de Crédito Bancolombia | Pensadas para ti",
+      "url": "https://www.bancolombia.com/personas/tarjetas-de-credito",
+      "start": "Tarjetas de crédito\nPensadas para todo, hechas para ti\nConoce a tu aliada perfecta. Una tarjeta que se adapta a lo que necesitas y te abre la puerta a beneficios únicos.\nControl y respaldo en cada compra\nAhorra 5 meses de cuota pidiéndola online.\nAplica para todas menos para Amex Green, Visa Selección, Visa LifeMiles, Mastercard Joven, Ideal y Única.​\nProtección para tu hogar, carro y viajes\nDescubre los seguros y asistencias que ofrece cada una ",
+      "middle": "lusivos.\nViaja con tranquilidad: asistencia médica y protección de equipaje en cada destino.\nRespaldo en todo el mundo en caso de robo o pérdida.\nVisa Oro\nElige una tarjeta premium que te respalda en cualquier parte del mundo.\nAprovecha el casillero virtual. Compra en Estados Unidos y recibe en Colombia.​\nTarjeta Gold American Express®\nLleva tus planes, conciertos, viajes y más al siguiente nivel con los beneficios de tu tarjeta.\nVisa Avianca Lif",
+      "end": " a tu pagos\nConoce las opciones que tenemos para que estés siempre al día.\nPreguntas frecuentes\nTe ayudamos a resolver tus dudas. Aquí encontrarás información útil sobre los temas más consultados.\n1. ¿Para qué sirve una tarjeta de crédito?\n2. ¿Cómo puedo realizar una avance?\n3. ¿Qué necesito para adquirir una tarjeta de crédito?\n4. ¿La tarjeta de crédito tiene cláusula de permanencia?\n5. ¿Cuándo me cobran cuota de manejo?\nMás preguntas frecuentes"
+    },
+    {
+      "category": "tarjetas_debito",
+      "title": "Tarjetas Débito para persona natural",
+      "url": "https://www.bancolombia.com/personas/tarjetas-debito/activar",
+      "start": "Cuentas\nTarjetas débito\nDescubre todo lo que puedes hacer con tu tarjeta. Actívala y compra de forma física o virtual, lo que quieras, cuando quieras. Si aún no tienes una cuenta con nosotros, ábrela.\nCrea tu tarjeta virtual\nEn menos de un minuto, créala para usar desde tus dispositivos digitales o para comprar en internet. Funciona con el mismo saldo de tu cuenta, pero los movimientos son diferentes a los que haces con tu tarjeta física:\nEntra e",
+      "middle": "otección de compras hasta por 45 días.\nMastercard Transporte\nPaga el pasaje del transporte público de cada ciudad:\nEn Barranquilla, Bogotá, Cali, Medellín o Pereira.\nÚsala con o sin recarga previa en tu tarjeta.\nMastercard Preferencial\nHecha para clientes preferenciales.\nAsistencia en viajes nacionales e internacionales.\nAsistencias en el hogar y el vehículo.\nMastercard Black\nPara cuenta de ahorros o corriente.\nAsistencia concierge para reservas ",
+      "end": "bito?\n2. ¿Cuál es el tiempo de entrega de mi tarjeta débito?\n3. ¿Cómo consulto el código de seguridad de mi tarjeta débito?\n4. ¿Qué pasa cuando apago mi tarjeta débito?\n5. ¿Qué hago si olvidé mi clave principal?\nMás preguntas frecuentes\nDocumentos\nSi quieres ver más opciones, descubre todo lo que hay para ti.\nRecibe o envía plata más rápido y sin costo, a cualquier banco.\nConocer más\nBolsillos\nSepara la plata de tu cuenta de ahorros desde tu app."
+    },
+    {
+      "category": "vivienda",
+      "title": "Créditos, hipotecas y leasing de Vivienda Bancolombia",
+      "url": "https://www.bancolombia.com/personas/creditos/vivienda",
+      "start": "Tu360\nBlog\nTransparencia\nConsumidor\nPersonas\nCréditos\nVivienda\nCréditos, hipotecas y leasing de Vivienda Bancolombia\n¿Quieres saber cómo va tu crédito? Ingresa aquí\nCréditos para vivienda\n¡Compra, construye, remodela o invierte! Hazlo a tu gusto con las opciones de financiación que tenemos para ti. Te acompañamos en cada paso de esta meta.\nTodos\nConsumo\nNegocios\nVehículo\nEstudio\nLocales y otros\nComprar\nCrédito de Vivienda\nPara emocionarte con la ",
+      "middle": "terior\nEl avalúo es gratis para invertir en Colombia.\nLeasing habitacional no familiar\nSuma los ingresos de hasta 3 personas para el inmueble que quieres financiar.\nCompra de cartera de crédito hipotecario\nPara financiar el saldo pendiente de tu cartera de vivienda que tienes con otra entidad\nRemodelar\nCrédito hipotecario para remodelación de vivienda\nPara renovar tus espacios y diseñarlos a tu gusto.\nConstruir\nCrédito hipotecario para construcci",
+      "end": "ecario para comprar vivienda\nComparador Crédito hipotecario - Leasing habitacional\nTambien te puede interesar\nSoluciones de vivienda\nTodo lo que necesitas para adquirir, ahorrar o arrendar el hogar que sueñas.\nConocer más\nOfertas y descuentos en vivienda\nEncuentra promociones de viviendas: casas, apartamentos y otros inmuebles.\nVer ofertas\nCréditos para locales y otros\nFinancia la compra de tu local comercial, bodega, oficina, consultorio o lote."
+    }
+  ],
+  "output_files": {
+    "raw": "data/corpus/raw_documents.jsonl",
+    "processed": "data/corpus/processed_documents.jsonl",
+    "manifest": "data/corpus/manifest.json",
+    "report": "data/corpus/quality_report.json"
+  }
+}

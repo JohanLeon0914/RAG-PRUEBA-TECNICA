@@ -1,0 +1,76 @@
+{
+  "bge": [
+    {
+      "query": "¿Cuál es la capital de Japón?",
+      "top_score": 0.31726298,
+      "top_chunk_id": "c3c4146b83180dcea653783b55a55978888694478d4dd6f464c253012ec675a0:2:17349c95e26c451a",
+      "top_title": "Fondos de Inversión Colectiva",
+      "top_url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/fondos-inversion-colectiva"
+    },
+    {
+      "query": "¿Cómo preparo una lasaña vegetariana?",
+      "top_score": 0.3473076,
+      "top_chunk_id": "48230d95c1dfb82ce66fbf1e9daed933b65bcb742fff73eec245d16575ad81b7:2:006774e9aa5ad6e1",
+      "top_title": "Tarjetas de Crédito Bancolombia | Pensadas para ti",
+      "top_url": "https://www.bancolombia.com/personas/tarjetas-de-credito"
+    },
+    {
+      "query": "¿Qué es una función lambda en Python?",
+      "top_score": 0.38726676,
+      "top_chunk_id": "585d46ff40e9ce7886de1d1d9bbdf1a7e344f5c0e70b65202f542ab342d26186:0:e510cdc6f7bc7508",
+      "top_title": "Renta Fija",
+      "top_url": "https://www.bancolombia.com/personas/productos-servicios/inversiones/renta-fija"
+    },
+    {
+      "query": "¿Quién ganó el mundial de fútbol de 2014?",
+      "top_score": 0.3575548,
+      "top_chunk_id": "d4539472f16a72dacce255f461fd6256a7e64891ea4f3dc27f5f3b6e2511cfb5:0:939aae0534bbb6fb",
+      "top_title": "Bancolombia Personas",
+      "top_url": "https://www.bancolombia.com/personas/aprender-es-facil/como-manejar-dinero/invertir/en-que-invertir"
+    },
+    {
+      "query": "¿Cómo se calcula la órbita de Marte?",
+      "top_score": 0.42667526,
+      "top_chunk_id": "9095623d43ac059c5b9bf41717d0bd2a621bdb6784e3d072b6a70869c5518090:1:26baa105d0d5dbce",
+      "top_title": "Tarjeta de Crédito Joven MasterCard - Obtén vida crediticia",
+      "top_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/mastercard/joven"
+    }
+  ],
+  "gte": [
+    {
+      "query": "¿Cuál es la capital de Japón?",
+      "top_score": 0.42166606,
+      "top_chunk_id": "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:3:4e38ac8719953ccd",
+      "top_title": "Crédito Hipotecario para Remodelación de Vivienda",
+      "top_url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-remodelar"
+    },
+    {
+      "query": "¿Cómo preparo una lasaña vegetariana?",
+      "top_score": 0.53576976,
+      "top_chunk_id": "5b4362989c48187418c37d5a62831b15d64f92f8a96ca0b1b832a7be869e9e6e:3:9f025b901c7a173a",
+      "top_title": "Unifica tus deudas con la compra de cartera de Bancolombia",
+      "top_url": "https://www.bancolombia.com/personas/creditos/consumo/compra-cartera"
+    },
+    {
+      "query": "¿Qué es una función lambda en Python?",
+      "top_score": 0.45990428,
+      "top_chunk_id": "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:8:1f1082234f0132c8",
+      "top_title": "Crédito Hipotecario para Remodelación de Vivienda",
+      "top_url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-remodelar"
+    },
+    {
+      "query": "¿Quién ganó el mundial de fútbol de 2014?",
+      "top_score": 0.46494538,
+      "top_chunk_id": "b01a63ecd6f844e248fd96421ac8697ff66a4f85e577ec45d714b764868cebe0:1:8ae405cb3d9a615c",
+      "top_title": "Tarjetas de crédito Visa Infinite - Bancolombia",
+      "top_url": "https://www.bancolombia.com/personas/tarjetas-de-credito/visa/infinite"
+    },
+    {
+      "query": "¿Cómo se calcula la órbita de Marte?",
+      "top_score": 0.48583448,
+      "top_chunk_id": "9225a7689b8b3fa1e4c82a8d21119679b7b804e117291e9d95e1a6a827bd41b1:2:d837f162fe56366e",
+      "top_title": "Crédito Hipotecario para Remodelación de Vivienda",
+      "top_url": "https://www.bancolombia.com/personas/creditos/vivienda/credito-hipotecario-para-remodelar"
+    }
+  ]
+}

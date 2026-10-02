@@ -1,0 +1,300 @@
+:root {
+  color: #20252d;
+  background: #f4f6f8;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+.shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  min-height: 100vh;
+  padding: 28px;
+}
+
+.intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #4a635b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.summary {
+  max-width: 720px;
+  margin: 12px 0 0;
+  color: #536070;
+  line-height: 1.55;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: max-content;
+  color: #23453e;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #2aa876;
+}
+
+.workspace {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  max-width: 1120px;
+  width: 100%;
+  min-height: 0;
+  margin: 0 auto;
+  border: 1px solid #d8dee6;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 20px 50px rgb(33 45 60 / 10%);
+}
+
+.conversation {
+  min-height: 520px;
+  max-height: calc(100vh - 270px);
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.empty-state {
+  display: grid;
+  align-content: center;
+  min-height: 430px;
+  gap: 18px;
+}
+
+.empty-state h2 {
+  max-width: 620px;
+  margin: 0;
+  color: #2d3642;
+  font-size: 1.35rem;
+  letter-spacing: 0;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.examples button {
+  border: 1px solid #ccd5df;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #2b3c4d;
+  background: #f8fafb;
+  cursor: pointer;
+}
+
+.examples button:hover {
+  border-color: #7c95ad;
+  background: #eef5f7;
+}
+
+.turn {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.user,
+.assistant {
+  max-width: min(780px, 100%);
+  border-radius: 8px;
+  padding: 14px 16px;
+  line-height: 1.55;
+}
+
+.user {
+  justify-self: end;
+  color: #ffffff;
+  background: #24445c;
+}
+
+.assistant {
+  justify-self: start;
+  border: 1px solid #dbe2ea;
+  background: #fbfcfd;
+}
+
+.assistant p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.assistant.pending {
+  color: #40596d;
+}
+
+.assistant.error {
+  border-color: #e0b4b1;
+  color: #8b2f26;
+  background: #fff7f6;
+}
+
+.unsupported {
+  margin-bottom: 10px !important;
+  color: #7b4a12;
+  font-weight: 700;
+}
+
+.sources {
+  margin-top: 16px;
+  border-top: 1px solid #e1e7ed;
+  padding-top: 12px;
+}
+
+.sources h3 {
+  margin: 0 0 8px;
+  color: #344250;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+}
+
+.sources ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sources li {
+  display: grid;
+  gap: 2px;
+}
+
+.sources a {
+  color: #195d83;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sources a:hover {
+  text-decoration: underline;
+}
+
+.sources span {
+  color: #697888;
+  font-size: 0.84rem;
+}
+
+.composer {
+  border-top: 1px solid #dde4eb;
+  padding: 16px;
+}
+
+.composer label {
+  display: block;
+  margin-bottom: 8px;
+  color: #344250;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.composer-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 52px;
+  resize: vertical;
+  border: 1px solid #cbd5df;
+  border-radius: 8px;
+  padding: 12px;
+  color: #20252d;
+  background: #ffffff;
+}
+
+textarea:focus {
+  outline: 3px solid #c9e8ef;
+  border-color: #41849a;
+}
+
+.composer button {
+  align-self: stretch;
+  min-width: 104px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 18px;
+  color: #ffffff;
+  background: #277464;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.composer button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+@media (max-width: 720px) {
+  .shell {
+    padding: 16px;
+  }
+
+  .intro {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .conversation {
+    min-height: 420px;
+    max-height: none;
+    padding: 16px;
+  }
+
+  .composer-row {
+    grid-template-columns: 1fr;
+  }
+
+  .composer button {
+    min-height: 48px;
+  }
+}
