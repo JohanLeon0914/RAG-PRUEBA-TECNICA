@@ -107,6 +107,13 @@ Prerequisites:
 - Docker
 - Docker Compose v2
 
+Clonar el repositorio y entrar al proyecto:
+
+```bash
+git clone https://github.com/JohanLeon0914/RAG-PRUEBA-TECNICA.git
+cd RAG-PRUEBA-TECNICA
+```
+
 Configurar variables:
 
 ```bash
