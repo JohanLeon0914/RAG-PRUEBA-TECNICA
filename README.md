@@ -1,187 +1,156 @@
 # Bancolombia Conversational RAG
 
-Proyecto de prueba tecnica para construir un asistente conversacional RAG sobre informacion publica de `bancolombia.com`.
+Asistente conversacional RAG sobre informacion publica de `bancolombia.com`.
 
-## Estado Actual
+El proyecto construye un flujo local completo: scraping controlado, limpieza, corpus curado, chunking, embeddings locales, Qdrant, retrieval denso, reranking opcional, generacion grounded con LLM, memoria conversacional persistida en SQLite, analytics runtime y frontend React/Vite. La prioridad del diseño es que cada decision sea reproducible localmente y defendible en una entrevista tecnica.
 
-Phase 1 implementa la base arquitectonica:
+## Features
 
-- Estructura modular de paquetes.
-- Configuracion centralizada por variables de entorno.
-- Contratos base para Repository, Strategy y Factory.
-- Modelos Pydantic compartidos.
-- Endpoint minimo `GET /health`.
-
-Phase 2 implementa scraping y cleaning:
-
-- Scraper especifico para Bancolombia.
-- Frontera de dominio configurable.
-- Limite de paginas, timeout y rate limit.
-- Filtros derivados de `robots.txt`: formularios, buscadores, PDFs, rutas REST/CGI, solicitudes de productos, preaprobados y ofertas.
-- Extraccion de URL, titulo, contenido, seccion y fecha de scraping.
-- Cleaner separado para normalizar texto y reducir ruido repetitivo.
-- Persistencia JSONL para `raw` y `processed`.
-
-Phase 3 implementa chunking, embeddings, Qdrant e ingestion:
-
-- Chunking determinista sobre documentos procesados.
-- `CHUNK_SIZE` y `CHUNK_OVERLAP` medidos en caracteres.
-- Embeddings locales mediante `sentence-transformers`.
-- Estrategias configurables para BGE-M3 y GTE Multilingual Base.
-- Repositorio vectorial Qdrant detrás de `VectorRepository`.
-- Pipeline explicito de ingestion desde JSONL procesado hasta Qdrant.
-
-Phase 4 implementa retrieval funcional:
-
-- `Retriever` independiente que depende solo de `EmbeddingStrategy` y `VectorRepository`.
-- Embedding de la pregunta con el modelo configurado.
-- Busqueda vectorial Top K en Qdrant usando cosine similarity.
-- CLI de debug para inspeccionar chunks recuperados, scores y tiempos.
-
-Phase 7 implementa el primer RAG completo local:
-
-- `POST /chat` recibe una pregunta y devuelve respuesta + fuentes.
-- `RAGService` orquesta retrieval, contexto, prompt y LLM.
-- `ContextBuilder` transforma chunks recuperados en contexto estructurado.
-- `PromptBuilder` aplica grounding: responder solo con contexto y rechazar evidencia insuficiente.
-- `LLMFactory` selecciona Groq o Gemini por configuracion.
-- El reranker queda disponible pero desactivado por defecto con `RERANK_ENABLED=false`.
-
-Phase 8 productiza la ejecucion local:
-
+- Web scraping controlado de paginas publicas de Bancolombia.
+- Almacenamiento separado de documentos raw y processed.
+- Cleaner para reducir navegacion, footer, cookies, breadcrumbs y ruido repetitivo.
+- Corpus curado de productos bancarios para personas, construido desde sitemap y categorias.
+- Chunking deterministico con `CHUNK_SIZE=900` y `CHUNK_OVERLAP=150`.
+- Embeddings locales open-source con BGE-M3 o GTE Multilingual.
+- Qdrant como vector database local con volumen persistente.
+- Retrieval denso con cosine similarity.
+- Reranking opcional con CrossEncoder BGE.
+- RAG grounded con fuentes reales provenientes de metadata.
 - Salida estructurada del LLM con `supported_by_context`.
-- Supresion de fuentes cuando la respuesta no esta soportada por el contexto.
-- API dockerizada con Python 3.12 y Torch CPU-only.
-- Frontend React/Vite minimo para probar el flujo.
-- Docker Compose con `qdrant`, `api` y `frontend`.
-- Volumen persistente para Qdrant y cache de Hugging Face.
+- Memoria conversacional por `session_id`.
+- Persistencia de conversaciones en SQLite.
+- Analytics runtime sobre el historial persistido.
+- Frontend React/Vite con acceso a conversaciones anteriores.
+- Ejecucion local reproducible con Docker Compose.
 
-Phase 9 cierra historial conversacional y analytics:
+## Architecture
 
-- `POST /chat` acepta `session_id` opcional y crea uno cuando falta.
-- El historial se persiste en SQLite y se recuperan los ultimos `N` mensajes configurables.
-- `PromptBuilder` recibe historial previo para resolver referencias conversacionales.
-- `GET /sessions/{session_id}/messages` permite auditar una conversacion.
-- `GET /analytics/summary` recorre SQLite y calcula metricas runtime e indicadores tecnicos de impacto.
-- SQLite persiste mediante volumen Docker separado.
+El sistema separa explicitamente ingestion offline de inferencia online. El scraping y la indexacion no ocurren durante cada pregunta del usuario.
 
-Preparacion de corpus para evaluacion:
-
-- Descubrimiento desde `sitemap-personas.xml`.
-- Seleccion curada de paginas de productos para personas.
-- Exclusion de home porque funciona mejor como navegacion/descubrimiento que como fuente densa de conocimiento.
-- Manifest reproducible con URL, titulo, categoria y `document_id`.
-- Reporte de calidad con descartes, duplicados exactos, estadisticas de contenido y estadisticas de chunks.
-
-Despliegue cloud queda fuera de esta fase.
-
-## Arquitectura Objetivo
-
-Ingestion pipeline:
+Offline ingestion:
 
 ```text
-Bancolombia -> Scraper -> Raw Data -> Cleaner -> Processed Data -> Chunker
-     -> Embedding Strategy -> Vector Repository -> Qdrant
+Bancolombia
+    ↓
+Scraper
+    ↓
+Raw Documents
+    ↓
+Cleaner
+    ↓
+Processed Documents
+    ↓
+Corpus Selection
+    ↓
+Chunker
+    ↓
+Embedding Strategy
+    ↓
+Qdrant
 ```
 
-Query pipeline:
+Online inference:
 
 ```text
-User -> Frontend -> API -> RAGService -> RetrievalPipeline -> Retriever -> Qdrant
-     -> [optional Reranker] -> ContextBuilder -> PromptBuilder + SQLite history
-     -> LLM -> Response + Sources -> SQLite persistence
+User
+    ↓
+React/Vite
+    ↓
+FastAPI
+    ↓
+RAGService
+    ↓
+ConversationRepository / SQLite history
+    ↓
+RetrievalPipeline
+    ↓
+BGE-M3
+    ↓
+Qdrant
+    ↓
+Optional Reranker
+    ↓
+ContextBuilder
+    ↓
+PromptBuilder + Conversation History
+    ↓
+LLM
+    ↓
+Grounded Answer + Sources
+    ↓
+SQLite persistence
 ```
 
-Estado de Phase 7 con `RERANK_ENABLED=false`:
+Pipeline sin reranking, configuracion por defecto:
 
 ```text
 Question -> BGE-M3 -> Qdrant cosine search -> Top 5 chunks
-         -> ContextBuilder -> PromptBuilder -> LLM -> grounded answer
+         -> ContextBuilder -> PromptBuilder + history -> LLM
+         -> grounded answer + sources
 ```
 
-Estado de Phase 7 con `RERANK_ENABLED=true`:
+Pipeline con reranking opcional:
 
 ```text
 Question -> BGE-M3 -> Qdrant Top 15 candidates
-         -> BGE reranker -> Top 5 chunks -> ContextBuilder
-         -> PromptBuilder -> LLM -> grounded answer
+         -> BGE CrossEncoder reranker -> Top 5 chunks
+         -> ContextBuilder -> PromptBuilder + history -> LLM
+         -> grounded answer + sources
 ```
 
-Retrieval no es generation: retrieval recupera fragmentos similares, mientras que generation redacta una respuesta usando solamente ese contexto. La suficiencia del contexto se controla con instrucciones de grounding y, opcionalmente, con `RAG_MIN_RETRIEVAL_SCORE` como heuristica experimental desactivada por defecto.
+Retrieval no es generation: retrieval recupera fragmentos similares; generation redacta la respuesta usando solo el contexto recuperado y el historial conversacional relevante. Qdrant puede devolver vecinos incluso para preguntas fuera del dominio, por eso el LLM debe declarar si la respuesta esta soportada por el contexto.
 
-Si el LLM devuelve `supported_by_context=false`, la API responde con `sources=[]`. Esta es una decision de UX/grounding para no mostrar fuentes irrelevantes cuando Qdrant devuelve vecinos semanticos pero no evidencia suficiente.
+## Quick Start
 
-## Design Patterns
+Prerequisites:
 
-Repository Pattern:
+- Docker
+- Docker Compose v2
 
-```text
-VectorRepository
-      ↑
-QdrantVectorRepository
+Configurar variables:
+
+```bash
+cp .env.example .env
 ```
 
-Problema real: ingestion y retrieval necesitan guardar y buscar vectores, pero no deberian conocer `qdrant-client`. El contrato permite mantener `RAGService`, `Retriever` e `IngestionPipeline` desacoplados de Qdrant. Ejemplo concreto: la API puede apuntar a `http://qdrant:6333` local o a Qdrant Cloud cambiando variables de entorno, sin cambiar logica RAG.
+Editar `.env` y agregar al menos:
 
-Strategy Pattern:
-
-```text
-EmbeddingStrategy
-├── BGEM3EmbeddingStrategy
-└── GTEMultilingualEmbeddingStrategy
-
-RerankingStrategy
-└── BGERerankingStrategy
+```bash
+GROQ_API_KEY=...
 ```
 
-Problema real: queriamos comparar embeddings y rerankers sin reescribir ingestion, retrieval ni evaluacion. `EmbeddingStrategy` permitio evaluar BGE-M3 vs GTE sobre los mismos chunks. `RerankingStrategy` permitio medir calidad vs latencia y dejar el reranker opcional con `RERANK_ENABLED=false`.
+Levantar Qdrant:
 
-Factory Pattern:
-
-```text
-LLMFactory
-├── GroqLLMProvider
-└── GeminiLLMProvider
+```bash
+docker compose up -d qdrant
 ```
 
-Problema real: `RAGService` debe generar respuestas, pero no debe depender del SDK de Groq o Gemini. La Factory centraliza seleccion, credenciales y modelo configurado. Ejemplo concreto: `LLM_PROVIDER=groq` o `LLM_PROVIDER=gemini` cambia el proveedor sin modificar `RAGService`.
+Ejecutar ingestion offline:
 
-## Architecture Decisions
+```bash
+docker compose run --rm api python -m scripts.ingest
+```
 
-BBVA -> Bancolombia:
-BBVA Colombia devolvia HTTP 403 con clientes Python estandar en el entorno de desarrollo. Bancolombia permitio scraping HTTP estandar respetando `robots.txt`, limites y rate limiting, por lo que se adopto como fuente alternativa permitida por el enunciado.
+Esto usa `data/corpus/processed_documents.jsonl`, genera chunks, calcula embeddings BGE-M3 y hace upsert en la coleccion configurada. No ejecuta scraping automatico.
 
-Raw vs processed:
-Se guardan documentos raw y processed para poder reprocesar, limpiar o rechunkear sin volver a descargar paginas publicas. Esto reduce variabilidad y hace reproducibles las evaluaciones.
+Levantar el stack completo:
 
-Cleaner estructural:
-El cleaner separa extraccion de limpieza y reduce navegacion, footer, cookies y texto repetitivo. La decision mantiene el scraper simple y evita mezclar responsabilidades.
+```bash
+docker compose up --build
+```
 
-Chunking 900/150:
-`CHUNK_SIZE=900` y `CHUNK_OVERLAP=150` son un baseline simple, determinista y medido en caracteres. No se presentan como optimos; se eligieron para experimentar de forma reproducible.
+URLs locales:
 
-Qdrant mediante Repository:
-`VectorRepository` aisla Qdrant de ingestion, retrieval y RAG. Cambiar a Qdrant Cloud o a otra base vectorial no deberia modificar la logica del dominio.
+- Frontend: `http://localhost:3000`
+- API: `http://localhost:8000`
+- API docs: `http://localhost:8000/docs`
+- Qdrant: `http://localhost:6333`
 
-SQLite para historial:
-Se usa SQLite porque la prueba es local, requiere persistencia real y no justifica PostgreSQL/Redis. La API accede mediante `ConversationRepository`, no mediante SQL directo en `RAGService`. En Docker la base vive en el volumen `conversation_data`.
+La primera ejecucion puede descargar BGE-M3 si el volumen `hf_cache` esta vacio. La descarga queda cacheada para ejecuciones posteriores.
 
-BGE-M3 vs GTE:
-BGE-M3 fue seleccionado para el pipeline por resultados de nuestro benchmark, no por superioridad universal. Resultado BGE-M3: Hit@1 0.6000, Hit@5 0.8000, MRR 0.6806. GTE se conserva para experimentacion y evaluaciones futuras.
+## Configuration
 
-Reranker opcional:
-Reranking improved retrieval quality substantially, but added ~5.18 s of CPU latency per query. It is therefore retained as an optional strategy but disabled by default for interactive CPU deployment.
-
-En Phase 6, dense + reranker mejoro Hit@5 a 0.9333 y MRR a 0.7844, con Candidate Recall@15 de 0.9333. Los casos q015 y q026 eran problemas de ranking y fueron resueltos o mejorados por reranking. Los casos q009 y q013 eran problemas de candidate retrieval porque el relevante no entro en Top 15, por lo que el reranker no podia recuperarlo.
-
-LLM mediante Factory:
-Groq es el proveedor principal configurado con `openai/gpt-oss-120b`; Gemini queda como alternativa. La Factory centraliza la seleccion de proveedor para que `RAGService` no conozca SDKs concretos.
-
-## Configuracion
-
-Copiar `.env.example` a `.env` y ajustar valores locales.
-
-Variables relevantes de Phase 3:
+Variables principales:
 
 ```bash
 CHUNK_SIZE=900
@@ -202,6 +171,7 @@ RERANK_ENABLED=false
 RERANK_TOP_K=5
 RAG_CONTEXT_TOP_K=5
 RAG_MIN_RETRIEVAL_SCORE=
+
 CONVERSATION_HISTORY_N_MESSAGES=6
 CONVERSATION_DB_PATH=data/conversations/conversations.db
 
@@ -211,72 +181,13 @@ GROQ_API_KEY=
 GEMINI_API_KEY=
 ```
 
-`CHUNK_SIZE` y `CHUNK_OVERLAP` usan caracteres, no tokens. Los valores iniciales son deliberadamente configurables para experimentar despues.
+Dentro de Docker Compose, la API usa `QDRANT_URL=http://qdrant:6333` y `CONVERSATION_DB_PATH=/app/data/conversations/conversations.db`. Desde host, `QDRANT_URL=http://localhost:6333`.
 
-## Ejecucion Local
+`CHUNK_SIZE` y `CHUNK_OVERLAP` estan medidos en caracteres, no tokens. Son un baseline configurable, no una afirmacion de optimalidad universal.
 
-### Docker End-to-End
+## API Usage
 
-Prerequisites:
-
-- Docker
-- Docker Compose v2
-
-Setup desde una maquina limpia:
-
-```bash
-cp .env.example .env
-```
-
-Editar `.env` y agregar al menos:
-
-```bash
-GROQ_API_KEY=...
-```
-
-Levantar Qdrant:
-
-```bash
-docker compose up -d qdrant
-```
-
-Ejecutar ingestion offline dentro del contenedor API:
-
-```bash
-docker compose run --rm api python -m scripts.ingest
-```
-
-Esto usa `data/corpus/processed_documents.jsonl`, genera chunks, calcula embeddings BGE-M3 y hace upsert en Qdrant. No ejecuta scraping automatico.
-
-Levantar stack completo:
-
-```bash
-docker compose up --build
-```
-
-URLs locales:
-
-- Frontend: `http://localhost:3000`
-- API: `http://localhost:8000`
-- API docs: `http://localhost:8000/docs`
-- Qdrant: `http://localhost:6333`
-
-Qdrant persiste en el volumen `qdrant_data`. La cache de modelos se reutiliza en el volumen `hf_cache`; si BGE-M3 no existe en cache, se descarga en la primera ingestion o primera query que cargue embeddings.
-
-### Ejecucion Host Con uv
-
-Si ejecutas scripts desde el host con `uv`, usa:
-
-```bash
-QDRANT_URL=http://localhost:6333 \
-QDRANT_COLLECTION=bancolombia_eval_bge_m3 \
-RERANK_ENABLED=false \
-uv --cache-dir .uv-cache run uvicorn app.main:app --reload
-```
-
-Si la aplicacion corre dentro de Docker Compose, usa `QDRANT_URL=http://qdrant:6333`.
-
-Request:
+Crear o continuar conversacion:
 
 ```bash
 curl -s http://127.0.0.1:8000/chat \
@@ -284,7 +195,7 @@ curl -s http://127.0.0.1:8000/chat \
   -d '{"message":"¿Qué opciones ofrece Bancolombia para financiar vivienda?","session_id":null}'
 ```
 
-Response:
+Respuesta:
 
 ```json
 {
@@ -308,7 +219,7 @@ Response:
 }
 ```
 
-Para continuar la conversacion, reutiliza el `session_id` devuelto:
+Continuar usando la misma sesion:
 
 ```bash
 curl -s http://127.0.0.1:8000/chat \
@@ -316,7 +227,13 @@ curl -s http://127.0.0.1:8000/chat \
   -d '{"message":"¿Y cuál sirve para remodelar?","session_id":"uuid"}'
 ```
 
-Consultar historial persistido:
+Listar sesiones persistidas:
+
+```bash
+curl -s http://127.0.0.1:8000/sessions
+```
+
+Consultar mensajes de una sesion:
 
 ```bash
 curl -s http://127.0.0.1:8000/sessions/uuid/messages
@@ -328,157 +245,149 @@ Consultar analytics runtime:
 curl -s http://127.0.0.1:8000/analytics/summary
 ```
 
-Para ejecutar scraping + cleaning:
+## Design Patterns
 
-```bash
-uv --cache-dir .uv-cache run python -m scripts.scrape_bancolombia
-```
-
-El script guarda documentos en:
-
-- `data/raw/bancolombia_documents.jsonl`
-- `data/processed/bancolombia_documents.jsonl`
-
-Estos archivos no se versionan porque dependen de una ejecucion real contra el sitio publico.
-
-Para ejecutar ingestion hacia Qdrant:
-
-```bash
-uv --cache-dir .uv-cache run python -m scripts.ingest
-```
-
-El comando carga `data/processed/bancolombia_documents.jsonl`, genera chunks, calcula embeddings locales y hace upsert en la coleccion configurada.
-
-Para inspeccionar la coleccion desde Python:
-
-```bash
-uv --cache-dir .uv-cache run python - <<'PY'
-from qdrant_client import QdrantClient
-
-client = QdrantClient(url="http://localhost:6333")
-collection = "bancolombia_bge"
-print(client.get_collection(collection))
-print(client.count(collection_name=collection, exact=True))
-PY
-```
-
-Para ejecutar una consulta manual de retrieval:
-
-```bash
-QDRANT_URL=http://localhost:6333 \
-QDRANT_COLLECTION=bancolombia_bge_phase3_test \
-EMBEDDING_PROVIDER=bge \
-EMBEDDING_MODEL=BAAI/bge-m3 \
-EMBEDDING_DEVICE=cpu \
-uv --cache-dir .uv-cache run python -m scripts.retrieve \
-  "¿Qué características tienen las tarjetas débito?" \
-  --top-k 5
-```
-
-El comando muestra:
-
-- pregunta
-- modelo de embedding
-- coleccion Qdrant
-- tiempo aproximado de embedding de query
-- tiempo aproximado de busqueda vectorial
-- Top K chunks con score, titulo, URL, indice y texto
-
-No se aplica threshold en Phase 4. Qdrant siempre puede devolver los vectores mas similares aunque una pregunta este fuera del dominio del corpus; esa validacion de suficiencia se resolvera en fases posteriores.
-
-## Frontend
-
-El frontend esta en `frontend/` y usa React + Vite. Consume `POST /chat` mediante el proxy `/api` de Vite:
+### Repository Pattern
 
 ```text
-Browser -> http://localhost:3000/api/chat -> Vite proxy -> http://api:8000/chat
+VectorRepository
+    ↑
+QdrantVectorRepository
+
+ConversationRepository
+    ↑
+SQLiteConversationRepository
 ```
 
-Esto evita exponer URLs internas de Docker al navegador y mantiene `GROQ_API_KEY` exclusivamente en el backend. El frontend muestra:
+Problema real: la logica RAG necesita almacenamiento vectorial y persistencia conversacional, pero no debe conocer detalles de `qdrant-client` ni de SQL.
 
-- conversacion
-- estado de carga
-- errores de API
-- respuestas
-- fuentes clicables cuando `supported_by_context=true`
-- indicador discreto sin fuentes cuando `supported_by_context=false`
+`VectorRepository` evita que `Retriever`, `RetrievalPipeline`, `RAGService` o ingestion dependan directamente de Qdrant. Esto permite cambiar entre Qdrant local y Qdrant Cloud mediante configuracion.
 
-## Offline vs Online
+`ConversationRepository` evita que `RAGService` ejecute SQL directamente. SQLite puede reemplazarse posteriormente por PostgreSQL u otro store sin reescribir la orquestacion RAG.
 
-Offline ingestion:
+### Strategy Pattern
 
 ```text
-Bancolombia -> Scraper -> Raw -> Cleaner -> CleanDocuments -> Chunker -> BGE -> Qdrant
+EmbeddingStrategy
+├── BGEM3EmbeddingStrategy
+└── GTEMultilingualEmbeddingStrategy
+
+RerankingStrategy
+└── BGERerankingStrategy
 ```
 
-Online inference:
+Problema real: el proyecto necesitaba comparar algoritmos intercambiables sin reescribir ingestion, retrieval ni evaluacion.
+
+`EmbeddingStrategy` permitio comparar BGE-M3 y GTE Multilingual sobre el mismo corpus, los mismos chunks y el mismo ground truth. `RerankingStrategy` permitio comparar retrieval denso contra retrieval + CrossEncoder y luego dejar el reranker opcional.
+
+### Factory Pattern
 
 ```text
-User -> Frontend -> POST /chat -> ConversationRepository -> RAGService
-     -> BGE query embedding -> Qdrant -> optional reranker -> ContextBuilder
-     -> PromptBuilder(history) -> LLM -> answer -> SQLite persistence
+LLMFactory
+├── GroqLLMProvider
+└── GeminiLLMProvider
 ```
 
-El scraping no ocurre en cada pregunta. La coleccion Qdrant debe existir antes de usar el chatbot en una maquina limpia.
+Problema real: `RAGService` necesita generacion, pero no debe importar SDKs concretos. `LLMFactory` centraliza la seleccion del proveedor, modelo y credenciales. Cambiar `LLM_PROVIDER=groq` a `LLM_PROVIDER=gemini` no modifica la logica RAG.
 
-## Conversation Memory
+## Technical Decisions
 
-La memoria conversacional se identifica por `session_id`. Si el cliente no envia uno, el backend crea un UUID y lo devuelve. El frontend conserva ese id para los siguientes mensajes de la conversacion activa.
+### BBVA -> Bancolombia
 
-`CONVERSATION_HISTORY_N_MESSAGES=6` significa los ultimos 6 mensajes previos, no 6 turnos completos. El mensaje actual se recupera despues de leer el historial para evitar duplicarlo en su propio prompt.
+El objetivo inicial era BBVA Colombia. Durante el diagnostico, BBVA devolvia HTTP 403 con el stack Python estandar utilizado. El enunciado permitia usar otro banco, y Bancolombia funcionaba correctamente con `httpx` + BeautifulSoup para paginas publicas.
 
-El historial se persiste en SQLite mediante `ConversationRepository -> SQLiteConversationRepository`. La ruta se configura con `CONVERSATION_DB_PATH`; en Docker se usa `/app/data/conversations/conversations.db` y el volumen `conversation_data`.
+La decision fue usar Bancolombia para mantener scraping reproducible y evitar mecanismos de evasion como CAPTCHA bypass, proxies, fingerprint spoofing o curl impersonation. No se presenta como un fallo del proyecto, sino como una decision tecnica frente a restricciones reales.
 
-La busqueda vectorial usa la pregunta actual. El historial entra al prompt para resolver referencias como "¿y cuál sirve para remodelar?". Una mejora futura defendible seria conversational query rewriting si los follow-ups no recuperan suficiente evidencia.
+### Raw vs Processed
 
-## Runtime Analytics
+Se conservan documentos raw y processed. Raw permite auditar y reprocesar sin volver a scrapear; processed contiene texto limpio para chunking, ingestion y evaluacion.
 
-`GET /analytics/summary` calcula metricas recorriendo los datos persistidos en SQLite:
+### Corpus Curado
 
-- `total_sessions`, `total_messages`, `total_user_messages`, `total_assistant_messages`
-- `supported_answers`, `unsupported_answers`, `supported_answer_rate`
-- promedios de latencia: total, embedding, search, rerank y LLM
-- `average_sources_per_supported_answer`
-- `average_messages_per_session`
-- `average_user_messages_per_session`
+El corpus se construyo desde sitemap y paginas de categoria, priorizando productos para personas. Se excluyeron home, formularios, login, PDFs, buscadores, duplicados y paginas de baja densidad informativa.
 
-Los `impact_indicators` son indicadores tecnicos derivados de datos reales: tasa de respuestas soportadas, latencia promedio y fuentes promedio por respuesta soportada. No son accuracy, satisfaccion de cliente, ahorro de tiempo ni KPIs de negocio, porque este prototipo no mide esos baselines.
+El corpus curado final tiene 40 `CleanDocuments` y 233 chunks. Se genero manifest reproducible con URL, titulo, categoria y `document_id`, y se aplico deduplicacion exacta por hash de contenido limpio.
 
-Offline evaluation y runtime analytics no se mezclan. Hit@K, MRR y Candidate Recall pertenecen al benchmark offline; sesiones, mensajes, soporte, fuentes y latencia pertenecen al uso runtime.
+### Chunking
 
-## Seguridad Basica
+`CHUNK_SIZE=900` y `CHUNK_OVERLAP=150` son un baseline simple, deterministico y medido en caracteres. Se eligieron para permitir experimentacion reproducible, no como valores universalmente optimos.
 
-- `.env` esta en `.gitignore`.
-- API keys no se copian dentro de la imagen.
-- API keys no se envian al frontend.
-- El frontend solo llama al backend propio mediante `/api`.
-- Los errores HTTP devueltos al navegador no incluyen stack traces.
-- `docker compose config` muestra variables efectivas, por lo que no debe compartirse publicamente si `.env` contiene secretos.
+### Qdrant
 
-Para preparar el corpus curado de evaluacion:
+Qdrant se eligio porque corre bien localmente con Docker, soporta cosine similarity, almacena payload metadata y puede migrar a Qdrant Cloud sin cambiar la logica de dominio. La coleccion final configurada es `bancolombia_eval_bge_m3`.
 
-```bash
-uv --cache-dir .uv-cache run python -m scripts.prepare_corpus
+### BGE-M3 vs GTE
+
+BGE-M3 fue seleccionado para este corpus por benchmark controlado, no porque sea universalmente superior a GTE.
+
+Resultado BGE-M3:
+
+- Hit@1: 0.6000
+- Hit@5: 0.8000
+- MRR: 0.6806
+
+GTE Multilingual se conserva como implementacion y como alternativa experimental.
+
+### Reranking Opcional
+
+Dense retrieval:
+
+```text
+query -> embedding -> Qdrant -> Top K
 ```
 
-El comando genera:
+Reranking:
 
-- `data/corpus/raw_documents.jsonl`
-- `data/corpus/processed_documents.jsonl`
-- `data/corpus/manifest.json`
-- `data/corpus/quality_report.json`
-
-Este paso no indexa en Qdrant ni sobrescribe colecciones existentes. Phase 5 creara colecciones nuevas para comparar embeddings sobre este mismo corpus.
-
-## Tests
-
-```bash
-pytest
+```text
+query -> embedding -> Qdrant Top candidates -> CrossEncoder -> reordered Top K
 ```
+
+El CrossEncoder no se ejecuta contra todo el corpus porque evalua pares `(query, chunk)` y su costo crece linealmente con el numero de chunks. Primero Qdrant recupera candidatos con alto recall y luego el reranker reordena solo ese conjunto.
+
+Resultados con BGE reranker:
+
+- Hit@5: 0.9333
+- MRR: 0.7844
+- Candidate Recall@15: 0.9333
+
+Trade-off: el reranker añadio aproximadamente 5.18 segundos de latencia CPU por query. Para un chatbot local interactivo, `RERANK_ENABLED=false` es el default. El reranker no fue eliminado; queda disponible por Strategy/configuracion cuando calidad tenga prioridad sobre latencia.
+
+Los casos q015 y q026 eran problemas de ranking y fueron resueltos o mejorados por reranking. Los casos q009 y q013 eran problemas de candidate retrieval porque el chunk relevante no entro en Top 15, por lo que el reranker no podia recuperarlo.
+
+### LLM + Grounding
+
+Proveedor principal: Groq.
+
+Modelo actual: `openai/gpt-oss-120b`.
+
+Proveedor alternativo: Gemini.
+
+El LLM devuelve una salida estructurada:
+
+```json
+{
+  "answer": "...",
+  "supported_by_context": true
+}
+```
+
+Si `supported_by_context=false`, la API devuelve `sources=[]`. Esto evita mostrar fuentes irrelevantes solo porque Qdrant encontro vecinos semanticos para una pregunta fuera del dominio. Esta decision mejora la UX de grounding, pero no reemplaza una evaluacion formal de retrieval.
+
+### SQLite
+
+SQLite se eligio porque la prueba es local, requiere persistencia real, debe funcionar en Docker y no justifica PostgreSQL/Redis. La DB persiste en el volumen `conversation_data`. Para despliegues multi-replica o alta concurrencia, PostgreSQL seria una evolucion razonable.
+
+### Torch CPU-only
+
+La imagen API usa Torch CPU-only para evitar dependencias CUDA pesadas y mejorar reproducibilidad local. Esto prioriza facilidad de ejecucion sobre aceleracion GPU.
 
 ## Evaluation
 
-Phase 5 compara retrieval denso BGE-M3 vs GTE Multilingual Base sobre el corpus congelado de `data/corpus/processed_documents.jsonl`.
+### Offline Evaluation
+
+La evaluacion offline compara retrieval y reranking sobre dataset curado y ground truth explicito. Estas metricas no deben mezclarse con analytics runtime.
+
+Benchmark de embeddings:
 
 ```bash
 uv --cache-dir .uv-cache run python -m scripts.evaluate_embeddings
@@ -489,7 +398,7 @@ El benchmark:
 - usa los mismos documentos, chunks y `chunk_id` para ambos modelos
 - crea colecciones Qdrant separadas
 - mide Hit@1, Hit@3, Hit@5 y MRR
-- separa tiempo de carga, warmup, embedding de query y busqueda vectorial
+- separa carga de modelo, warmup, embedding de query y busqueda vectorial
 - guarda resultados por pregunta y resumen machine-readable
 
 Artefactos:
@@ -500,25 +409,7 @@ Artefactos:
 - `evaluation/out_of_domain_results.json`
 - `evaluation/summary.json`
 
-Nota reproducible: `Alibaba-NLP/gte-multilingual-base` requiere `trust_remote_code=True` y fallo con `transformers>=5` por un problema de `position_ids` reportado en Hugging Face. El proyecto pinnea `sentence-transformers==3.4.1` y `transformers==4.53.3` para ejecutar BGE y GTE localmente de forma estable.
-
-Resultado usado para seleccionar BGE-M3 en este corpus:
-
-- Hit@1: 0.6000
-- Hit@5: 0.8000
-- MRR: 0.6806
-
-Phase 6 evalua reranking sobre BGE-M3:
-
-```text
-Dense retrieval:
-query -> BGE-M3 -> Qdrant cosine search -> Top K
-
-Reranking:
-query -> BGE-M3 -> Qdrant Top candidates -> CrossEncoder -> reordered Top K
-```
-
-El CrossEncoder no se ejecuta contra todo el corpus porque evalua pares `(query, chunk)` y su costo crece linealmente con el numero de chunks. Primero se usa Qdrant para recuperar candidatos con alto recall y luego el reranker reordena solo ese conjunto pequeno.
+Benchmark de reranker:
 
 ```bash
 uv --cache-dir .uv-cache run python -m scripts.evaluate_reranker
@@ -529,23 +420,193 @@ Artefactos:
 - `evaluation/results_reranker.json`
 - `evaluation/reranker_summary.json`
 
-Los scores de Qdrant y del CrossEncoder se guardan para debugging, pero no son directamente comparables porque viven en escalas distintas.
+Los scores de Qdrant y del CrossEncoder se preservan para debugging, pero no son directamente comparables porque viven en escalas distintas.
 
-Decision para el pipeline final local:
+### Runtime Analytics
 
-```bash
-RERANK_ENABLED=false
+`GET /analytics/summary` calcula metricas recorriendo SQLite:
+
+- `total_sessions`
+- `total_messages`
+- `total_user_messages`
+- `total_assistant_messages`
+- `supported_answers`
+- `unsupported_answers`
+- `supported_answer_rate`
+- `average_total_latency_ms`
+- `average_embedding_latency_ms`
+- `average_search_latency_ms`
+- `average_rerank_latency_ms`
+- `average_llm_latency_ms`
+- `average_sources_per_supported_answer`
+- `average_messages_per_session`
+- `average_user_messages_per_session`
+
+`supported_answer_rate` no es accuracy. Es la proporcion de respuestas que el LLM marco como soportadas por el contexto recuperado.
+
+Impact indicators incluidos:
+
+- `supported_answer_rate`
+- `average_response_latency_ms`
+- `average_sources_per_supported_answer`
+
+No se reportan customer satisfaction, time saved, productivity gain, ROI ni KPIs de negocio porque el sistema no recolecta datos para demostrar esas afirmaciones.
+
+## Conversation Memory
+
+La memoria conversacional se identifica por `session_id`.
+
+- Si el cliente envia `session_id=null`, el backend crea un UUID.
+- El frontend conserva el `session_id` para continuar la conversacion.
+- El backend recupera los ultimos `CONVERSATION_HISTORY_N_MESSAGES=6` mensajes previos.
+- Son mensajes, no turnos completos.
+- El mensaje actual no se duplica en su propio prompt.
+- El historial entra al `PromptBuilder`.
+- Los mensajes user/assistant se persisten en SQLite al terminar exitosamente el turno.
+
+El retrieval usa principalmente la pregunta actual. El historial ayuda al LLM a resolver referencias conversacionales en el prompt. Una mejora futura razonable seria conversational query rewriting para reformular follow-ups antes del vector search.
+
+El frontend permite ver conversaciones anteriores cargando sesiones desde `GET /sessions` y mensajes desde `GET /sessions/{session_id}/messages`.
+
+## Frontend
+
+El frontend usa React, Vite y TypeScript.
+
+```text
+Browser -> /api/chat -> Vite proxy -> FastAPI
 ```
 
-El reranker permanece disponible para escenarios donde la mejora de calidad compense la latencia extra.
+Tambien consume:
 
-## Limitaciones Actuales
+- `/api/sessions`
+- `/api/sessions/{session_id}/messages`
+- `/api/analytics/summary` disponible para inspeccion desde API
 
-- SQLite es apropiado para demo local/single-instance; alta concurrencia o multiples replicas requeririan PostgreSQL u otro store compartido.
-- No hay autenticacion ni autorizacion multiusuario; los endpoints son para prueba tecnica local.
-- El retrieval conversacional usa la pregunta actual; query rewriting conversacional queda como mejora futura.
-- `supported_by_context` es grounding asistido por LLM, no una medida formal de accuracy.
-- Las metricas de analytics son indicadores tecnicos, no KPIs de negocio.
-- El threshold `RAG_MIN_RETRIEVAL_SCORE` existe solo como heuristica experimental y no esta activado por defecto.
-- El primer arranque puede descargar BGE-M3 si el volumen `hf_cache` esta vacio.
-- La imagen API usa Torch CPU-only para evitar dependencias CUDA pesadas en despliegue local.
+El frontend muestra conversacion, loading state, errores, fuentes clicables, estado unsupported y lista de conversaciones anteriores. Nunca recibe `GROQ_API_KEY` ni otras credenciales del backend.
+
+## Docker
+
+`docker-compose.yml` define:
+
+- `qdrant`: vector database local.
+- `api`: FastAPI + embeddings + RAG.
+- `frontend`: React/Vite.
+
+Volumenes:
+
+- `qdrant_data`: persistencia de colecciones Qdrant.
+- `conversation_data`: persistencia SQLite.
+- `hf_cache`: cache de modelos Hugging Face.
+
+La separacion de volumenes permite reiniciar containers con `docker compose down` y `docker compose up -d` sin perder vectores ni conversaciones, siempre que no se use `docker compose down -v`.
+
+## Security
+
+- `.env` esta en `.gitignore`.
+- `.env.example` no contiene secretos.
+- API keys existen solo en backend.
+- El frontend no recibe `GROQ_API_KEY` ni `GEMINI_API_KEY`.
+- Los errores HTTP no devuelven stack traces al navegador.
+- `docker compose config` expande variables efectivas, por lo que no debe compartirse publicamente si `.env` contiene secretos.
+
+## Useful Commands
+
+Scraping + cleaning:
+
+```bash
+uv --cache-dir .uv-cache run python -m scripts.scrape_bancolombia
+```
+
+Preparar corpus curado:
+
+```bash
+uv --cache-dir .uv-cache run python -m scripts.prepare_corpus
+```
+
+Ingestion hacia Qdrant:
+
+```bash
+QDRANT_URL=http://localhost:6333 \
+QDRANT_COLLECTION=bancolombia_eval_bge_m3 \
+uv --cache-dir .uv-cache run python -m scripts.ingest
+```
+
+Consulta manual de retrieval:
+
+```bash
+QDRANT_URL=http://localhost:6333 \
+QDRANT_COLLECTION=bancolombia_eval_bge_m3 \
+EMBEDDING_PROVIDER=bge \
+EMBEDDING_MODEL=BAAI/bge-m3 \
+EMBEDDING_DEVICE=cpu \
+uv --cache-dir .uv-cache run python -m scripts.retrieve \
+  "¿Qué características tienen las tarjetas débito?" \
+  --top-k 5
+```
+
+Inspeccionar coleccion Qdrant:
+
+```bash
+curl -s http://localhost:6333/collections/bancolombia_eval_bge_m3
+```
+
+## Tests
+
+Validacion backend:
+
+```bash
+uv --cache-dir .uv-cache run --extra dev ruff check .
+uv --cache-dir .uv-cache run --extra dev pytest
+```
+
+Resultado actual validado:
+
+- `ruff`: All checks passed.
+- `pytest`: 84 passed.
+
+Validacion frontend:
+
+```bash
+cd frontend
+npm run lint
+npm run test
+npm run build
+```
+
+Resultado actual validado:
+
+- `npm run lint`: OK.
+- `npm run test`: 6 passed.
+- `npm run build`: OK.
+
+Validacion Docker:
+
+```bash
+docker compose build
+docker compose up -d
+```
+
+Resultado actual validado: build y stack local funcionando con `qdrant`, `api` y `frontend`.
+
+## Limitations
+
+- SQLite es adecuado para demo local/single-instance; multiples replicas o alta concurrencia requeririan PostgreSQL u otro store compartido.
+- No hay autenticacion ni autorizacion multiusuario.
+- Conversational query rewriting no esta implementado.
+- `supported_by_context` no equivale a accuracy formal.
+- Analytics runtime son indicadores tecnicos, no KPIs de negocio.
+- `RAG_MIN_RETRIEVAL_SCORE` es una heuristica experimental y esta desactivada por defecto.
+- La primera ejecucion puede descargar BGE-M3 si `hf_cache` esta vacio.
+- El reranker mejora calidad pero tiene alta latencia en CPU.
+- Torch CPU-only prioriza reproducibilidad local sobre aceleracion GPU.
+
+## Future Improvements
+
+- Conversational query rewriting para mejorar follow-ups ambiguos.
+- PostgreSQL u otro store compartido para despliegues multi-replica.
+- Autenticacion y autorizacion por usuario.
+- Observability/tracing mas completo.
+- Optimizacion o serving especializado del reranker.
+- Evaluacion con dataset mas grande y mas categorias.
+- Hybrid search o filtros por metadata si el corpus crece.
+- Despliegue cloud en Google Cloud Run + Qdrant Cloud si fuera requerido.
