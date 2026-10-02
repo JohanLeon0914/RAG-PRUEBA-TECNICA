@@ -5,6 +5,7 @@ from app.rag.context_builder import ContextBuilder
 from app.rag.prompt_builder import PromptBuilder
 from app.rag.service import RAGService
 from app.retrieval.pipeline import RetrievalPipelineResult
+from app.schemas import ChatMessage
 from tests.helpers import retrieved_chunk
 
 
@@ -40,6 +41,31 @@ class FailingLLM(LLMProvider):
         raise RuntimeError("provider failed")
 
 
+class FakeConversationRepository:
+    def __init__(self) -> None:
+        self.messages = [
+            ChatMessage(role="user", content="pregunta previa"),
+            ChatMessage(role="assistant", content="respuesta previa"),
+        ]
+        self.created_session_id = "session-1"
+        self.recent_limits: list[int] = []
+        self.added: list[tuple[str, str, str]] = []
+
+    def get_or_create_session(self, session_id: str | None = None):
+        class Session:
+            id = session_id or "session-1"
+
+        return Session()
+
+    def get_recent_messages(self, session_id: str, limit: int):
+        self.recent_limits.append(limit)
+        return self.messages[-limit:]
+
+    def add_message(self, session_id: str, role: str, content: str, **kwargs):
+        self.added.append((session_id, role, content))
+        return None
+
+
 def test_rag_service_orchestrates_retrieval_context_prompt_and_llm() -> None:
     pipeline = FakePipeline()
     llm = FakeLLM()
@@ -60,6 +86,34 @@ def test_rag_service_orchestrates_retrieval_context_prompt_and_llm() -> None:
     assert response.retrieval_metadata["embedding_latency_ms"] == 1.0
     assert response.retrieval_metadata["llm_usage"] == {"total_tokens": 12}
     assert "Contenido relevante de prueba" in llm.prompts[0][1]
+
+
+def test_rag_service_uses_history_without_duplicating_current_question() -> None:
+    pipeline = FakePipeline()
+    llm = FakeLLM()
+    repository = FakeConversationRepository()
+    service = RAGService(
+        retrieval_pipeline=pipeline,  # type: ignore[arg-type]
+        context_builder=ContextBuilder(max_chunks=5),
+        prompt_builder=PromptBuilder(),
+        llm=llm,
+        conversation_repository=repository,  # type: ignore[arg-type]
+        history_n_messages=2,
+    )
+
+    response = service.answer("pregunta actual", session_id="session-abc")
+
+    assert response.session_id == "session-abc"
+    assert repository.recent_limits == [2]
+    assert repository.added == [
+        ("session-abc", "user", "pregunta actual"),
+        ("session-abc", "assistant", "Respuesta fundamentada"),
+    ]
+    user_prompt = llm.prompts[0][1]
+    history_block = user_prompt.split("Contexto recuperado:")[0]
+    assert "pregunta previa" in history_block
+    assert "respuesta previa" in history_block
+    assert "pregunta actual" not in history_block
 
 
 def test_rag_service_deduplicates_sources_by_url() -> None:

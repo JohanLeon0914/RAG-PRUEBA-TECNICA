@@ -56,3 +56,19 @@ User -> Frontend -> POST /chat -> RAGService -> BGE query embedding
 ```
 
 Scraping and ingestion are not performed per user query.
+
+## 12. Conversation History Persistence
+
+SQLite is used for conversation history because the project is a local technical test that needs real persistence without adding PostgreSQL, Redis, or external infrastructure. The database path is configurable with `CONVERSATION_DB_PATH`; Docker stores it in the `conversation_data` volume so history survives container restarts.
+
+`RAGService` does not execute SQL directly. It depends on `ConversationRepository`, implemented by `SQLiteConversationRepository`. This keeps persistence swappable and applies the same repository reasoning already used for Qdrant.
+
+The prompt receives the last `CONVERSATION_HISTORY_N_MESSAGES` previous messages. Retrieval still uses the current user question to avoid degrading dense retrieval by blindly concatenating the full conversation. If follow-up retrieval is insufficient, the next improvement would be conversational query rewriting.
+
+## 13. Runtime Analytics And Impact Indicators
+
+Runtime analytics are computed from persisted SQLite conversations through `GET /analytics/summary`. These metrics describe observed system behavior: sessions, message counts, supported answer rate, latency, and sources per supported answer.
+
+They are intentionally separate from offline retrieval evaluation. Hit@K, MRR, and Candidate Recall measure experimental retrieval quality. Runtime analytics measure product usage and operational behavior.
+
+Impact indicators are limited to values supported by collected data: supported answer rate, average response latency, and average sources per supported answer. The project does not claim customer satisfaction, human time saved, productivity gain, or business accuracy because those require external baselines.

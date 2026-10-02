@@ -6,7 +6,9 @@ from app.llm.factory import LLMFactory
 from app.rag.context_builder import ContextBuilder
 from app.rag.prompt_builder import PromptBuilder
 from app.rag.service import RAGService
+from app.repositories.conversation_repository import ConversationRepository
 from app.repositories.qdrant_repository import QdrantVectorRepository
+from app.repositories.sqlite_conversation_repository import SQLiteConversationRepository
 from app.reranking.bge import BGERerankingStrategy
 from app.retrieval.pipeline import RetrievalPipeline
 from app.retrieval.retriever import Retriever
@@ -18,7 +20,17 @@ def get_rag_service() -> RAGService:
     return build_rag_service(settings)
 
 
+@lru_cache
+def get_conversation_repository() -> ConversationRepository:
+    settings = get_settings()
+    repository = SQLiteConversationRepository(settings.conversation_db_path)
+    repository.initialize()
+    return repository
+
+
 def build_rag_service(settings: Settings) -> RAGService:
+    conversation_repository = SQLiteConversationRepository(settings.conversation_db_path)
+    conversation_repository.initialize()
     embeddings = create_embedding_strategy(settings)
     repository = QdrantVectorRepository(
         url=settings.qdrant_url,
@@ -50,4 +62,6 @@ def build_rag_service(settings: Settings) -> RAGService:
         context_builder=ContextBuilder(max_chunks=settings.rag_context_top_k),
         prompt_builder=PromptBuilder(),
         llm=LLMFactory.create(settings),
+        conversation_repository=conversation_repository,
+        history_n_messages=settings.conversation_history_n_messages,
     )

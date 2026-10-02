@@ -56,6 +56,15 @@ Phase 8 productiza la ejecucion local:
 - Docker Compose con `qdrant`, `api` y `frontend`.
 - Volumen persistente para Qdrant y cache de Hugging Face.
 
+Phase 9 cierra historial conversacional y analytics:
+
+- `POST /chat` acepta `session_id` opcional y crea uno cuando falta.
+- El historial se persiste en SQLite y se recuperan los ultimos `N` mensajes configurables.
+- `PromptBuilder` recibe historial previo para resolver referencias conversacionales.
+- `GET /sessions/{session_id}/messages` permite auditar una conversacion.
+- `GET /analytics/summary` recorre SQLite y calcula metricas runtime e indicadores tecnicos de impacto.
+- SQLite persiste mediante volumen Docker separado.
+
 Preparacion de corpus para evaluacion:
 
 - Descubrimiento desde `sitemap-personas.xml`.
@@ -64,7 +73,7 @@ Preparacion de corpus para evaluacion:
 - Manifest reproducible con URL, titulo, categoria y `document_id`.
 - Reporte de calidad con descartes, duplicados exactos, estadisticas de contenido y estadisticas de chunks.
 
-Memoria conversacional avanzada y despliegue cloud quedan fuera de esta fase.
+Despliegue cloud queda fuera de esta fase.
 
 ## Arquitectura Objetivo
 
@@ -79,8 +88,8 @@ Query pipeline:
 
 ```text
 User -> Frontend -> API -> RAGService -> RetrievalPipeline -> Retriever -> Qdrant
-     -> [optional Reranker] -> ContextBuilder -> PromptBuilder -> LLM
-     -> Response + Sources
+     -> [optional Reranker] -> ContextBuilder -> PromptBuilder + SQLite history
+     -> LLM -> Response + Sources -> SQLite persistence
 ```
 
 Estado de Phase 7 con `RERANK_ENABLED=false`:
@@ -154,6 +163,9 @@ Chunking 900/150:
 Qdrant mediante Repository:
 `VectorRepository` aisla Qdrant de ingestion, retrieval y RAG. Cambiar a Qdrant Cloud o a otra base vectorial no deberia modificar la logica del dominio.
 
+SQLite para historial:
+Se usa SQLite porque la prueba es local, requiere persistencia real y no justifica PostgreSQL/Redis. La API accede mediante `ConversationRepository`, no mediante SQL directo en `RAGService`. En Docker la base vive en el volumen `conversation_data`.
+
 BGE-M3 vs GTE:
 BGE-M3 fue seleccionado para el pipeline por resultados de nuestro benchmark, no por superioridad universal. Resultado BGE-M3: Hit@1 0.6000, Hit@5 0.8000, MRR 0.6806. GTE se conserva para experimentacion y evaluaciones futuras.
 
@@ -190,6 +202,8 @@ RERANK_ENABLED=false
 RERANK_TOP_K=5
 RAG_CONTEXT_TOP_K=5
 RAG_MIN_RETRIEVAL_SCORE=
+CONVERSATION_HISTORY_N_MESSAGES=6
+CONVERSATION_DB_PATH=data/conversations/conversations.db
 
 LLM_PROVIDER=groq
 LLM_MODEL=openai/gpt-oss-120b
@@ -267,13 +281,14 @@ Request:
 ```bash
 curl -s http://127.0.0.1:8000/chat \
   -H 'Content-Type: application/json' \
-  -d '{"message":"¿Qué opciones ofrece Bancolombia para financiar vivienda?"}'
+  -d '{"message":"¿Qué opciones ofrece Bancolombia para financiar vivienda?","session_id":null}'
 ```
 
 Response:
 
 ```json
 {
+  "session_id": "uuid",
   "answer": "...",
   "supported_by_context": true,
   "sources": [
@@ -291,6 +306,26 @@ Response:
     "total_latency_ms": 1000.0
   }
 }
+```
+
+Para continuar la conversacion, reutiliza el `session_id` devuelto:
+
+```bash
+curl -s http://127.0.0.1:8000/chat \
+  -H 'Content-Type: application/json' \
+  -d '{"message":"¿Y cuál sirve para remodelar?","session_id":"uuid"}'
+```
+
+Consultar historial persistido:
+
+```bash
+curl -s http://127.0.0.1:8000/sessions/uuid/messages
+```
+
+Consultar analytics runtime:
+
+```bash
+curl -s http://127.0.0.1:8000/analytics/summary
 ```
 
 Para ejecutar scraping + cleaning:
@@ -379,11 +414,37 @@ Bancolombia -> Scraper -> Raw -> Cleaner -> CleanDocuments -> Chunker -> BGE -> 
 Online inference:
 
 ```text
-User -> Frontend -> POST /chat -> RAGService -> BGE query embedding
-     -> Qdrant -> optional reranker -> ContextBuilder -> LLM -> answer
+User -> Frontend -> POST /chat -> ConversationRepository -> RAGService
+     -> BGE query embedding -> Qdrant -> optional reranker -> ContextBuilder
+     -> PromptBuilder(history) -> LLM -> answer -> SQLite persistence
 ```
 
 El scraping no ocurre en cada pregunta. La coleccion Qdrant debe existir antes de usar el chatbot en una maquina limpia.
+
+## Conversation Memory
+
+La memoria conversacional se identifica por `session_id`. Si el cliente no envia uno, el backend crea un UUID y lo devuelve. El frontend conserva ese id para los siguientes mensajes de la conversacion activa.
+
+`CONVERSATION_HISTORY_N_MESSAGES=6` significa los ultimos 6 mensajes previos, no 6 turnos completos. El mensaje actual se recupera despues de leer el historial para evitar duplicarlo en su propio prompt.
+
+El historial se persiste en SQLite mediante `ConversationRepository -> SQLiteConversationRepository`. La ruta se configura con `CONVERSATION_DB_PATH`; en Docker se usa `/app/data/conversations/conversations.db` y el volumen `conversation_data`.
+
+La busqueda vectorial usa la pregunta actual. El historial entra al prompt para resolver referencias como "¿y cuál sirve para remodelar?". Una mejora futura defendible seria conversational query rewriting si los follow-ups no recuperan suficiente evidencia.
+
+## Runtime Analytics
+
+`GET /analytics/summary` calcula metricas recorriendo los datos persistidos en SQLite:
+
+- `total_sessions`, `total_messages`, `total_user_messages`, `total_assistant_messages`
+- `supported_answers`, `unsupported_answers`, `supported_answer_rate`
+- promedios de latencia: total, embedding, search, rerank y LLM
+- `average_sources_per_supported_answer`
+- `average_messages_per_session`
+- `average_user_messages_per_session`
+
+Los `impact_indicators` son indicadores tecnicos derivados de datos reales: tasa de respuestas soportadas, latencia promedio y fuentes promedio por respuesta soportada. No son accuracy, satisfaccion de cliente, ahorro de tiempo ni KPIs de negocio, porque este prototipo no mide esos baselines.
+
+Offline evaluation y runtime analytics no se mezclan. Hit@K, MRR y Candidate Recall pertenecen al benchmark offline; sesiones, mensajes, soporte, fuentes y latencia pertenecen al uso runtime.
 
 ## Seguridad Basica
 
@@ -480,7 +541,11 @@ El reranker permanece disponible para escenarios donde la mejora de calidad comp
 
 ## Limitaciones Actuales
 
-- No hay memoria conversacional avanzada; Phase 8 valida el RAG local de una pregunta.
+- SQLite es apropiado para demo local/single-instance; alta concurrencia o multiples replicas requeririan PostgreSQL u otro store compartido.
+- No hay autenticacion ni autorizacion multiusuario; los endpoints son para prueba tecnica local.
+- El retrieval conversacional usa la pregunta actual; query rewriting conversacional queda como mejora futura.
+- `supported_by_context` es grounding asistido por LLM, no una medida formal de accuracy.
+- Las metricas de analytics son indicadores tecnicos, no KPIs de negocio.
 - El threshold `RAG_MIN_RETRIEVAL_SCORE` existe solo como heuristica experimental y no esta activado por defecto.
 - El primer arranque puede descargar BGE-M3 si el volumen `hf_cache` esta vacio.
 - La imagen API usa Torch CPU-only para evitar dependencias CUDA pesadas en despliegue local.

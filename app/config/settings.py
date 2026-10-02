@@ -94,6 +94,8 @@ class Settings(BaseSettings):
     rag_context_top_k: int = 5
     rag_min_retrieval_score: float | None = None
     memory_max_messages: int = 8
+    conversation_history_n_messages: int = 6
+    conversation_db_path: str = "data/conversations/conversations.db"
 
     @field_validator("bank_start_urls", mode="before")
     @classmethod
@@ -138,6 +140,7 @@ class Settings(BaseSettings):
         "llm_timeout_seconds",
         "llm_max_tokens",
         "memory_max_messages",
+        "conversation_history_n_messages",
     )
     @classmethod
     def validate_positive_int(cls, value: int) -> int:

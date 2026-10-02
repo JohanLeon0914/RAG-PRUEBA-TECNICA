@@ -52,7 +52,26 @@ class ChatRequest(BaseModel):
     session_id: str | None = Field(default=None, min_length=1, max_length=128)
 
 
+class ConversationMessage(ChatMessage):
+    id: int
+    session_id: str
+    supported_by_context: bool | None = None
+    embedding_latency_ms: float | None = None
+    search_latency_ms: float | None = None
+    rerank_latency_ms: float | None = None
+    llm_latency_ms: float | None = None
+    total_latency_ms: float | None = None
+    sources_count: int | None = None
+
+
+class ConversationSession(BaseModel):
+    id: str
+    created_at: datetime
+    updated_at: datetime
+
+
 class ChatResponse(BaseModel):
+    session_id: str
     answer: str
     supported_by_context: bool
     sources: list[Source]
@@ -60,7 +79,27 @@ class ChatResponse(BaseModel):
 
 
 class RAGResponse(BaseModel):
+    session_id: str | None = None
     answer: str
     supported_by_context: bool
     sources: list[Source]
     retrieval_metadata: dict[str, Any] = Field(default_factory=dict)
+
+
+class AnalyticsSummary(BaseModel):
+    total_sessions: int
+    total_messages: int
+    total_user_messages: int
+    total_assistant_messages: int
+    supported_answers: int
+    unsupported_answers: int
+    supported_answer_rate: float
+    average_total_latency_ms: float | None
+    average_embedding_latency_ms: float | None
+    average_search_latency_ms: float | None
+    average_rerank_latency_ms: float | None
+    average_llm_latency_ms: float | None
+    average_sources_per_supported_answer: float | None
+    average_messages_per_session: float | None
+    average_user_messages_per_session: float | None
+    impact_indicators: dict[str, float | None] = Field(default_factory=dict)

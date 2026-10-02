@@ -29,7 +29,7 @@ class FakeLLM(LLMProvider):
         return LLMResponse(content="ok", supported_by_context=False, usage={})
 
 
-def test_build_rag_service_does_not_create_reranker_when_disabled(monkeypatch) -> None:
+def test_build_rag_service_does_not_create_reranker_when_disabled(monkeypatch, tmp_path) -> None:
     created_rerankers = []
 
     class ExplodingReranker:
@@ -45,7 +45,13 @@ def test_build_rag_service_does_not_create_reranker_when_disabled(monkeypatch) -
     monkeypatch.setattr("app.dependencies.LLMFactory.create", lambda settings: FakeLLM())
     monkeypatch.setattr("app.dependencies.BGERerankingStrategy", ExplodingReranker)
 
-    service = build_rag_service(Settings(RERANK_ENABLED=False, GROQ_API_KEY="test-key"))
+    service = build_rag_service(
+        Settings(
+            RERANK_ENABLED=False,
+            GROQ_API_KEY="test-key",
+            CONVERSATION_DB_PATH=str(tmp_path / "conversations.db"),
+        )
+    )
 
     assert service.retrieval_pipeline.rerank_enabled is False
     assert created_rerankers == []

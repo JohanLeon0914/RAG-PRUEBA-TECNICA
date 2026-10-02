@@ -15,6 +15,7 @@ const examples = [
 ];
 
 export function App() {
+  const [sessionId, setSessionId] = useState<string | null>(() => getStoredSessionId());
   const [message, setMessage] = useState('');
   const [turns, setTurns] = useState<ChatTurn[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +31,9 @@ export function App() {
     setIsLoading(true);
 
     try {
-      const response = await sendMessage(question);
+      const response = await sendMessage(question, sessionId);
+      setSessionId(response.session_id);
+      storeSessionId(response.session_id);
       setTurns((current) =>
         current.map((turn) => (turn.id === turnId ? { ...turn, response } : turn)),
       );
@@ -62,7 +65,7 @@ export function App() {
         </div>
         <div className="status">
           <span className="status-dot" aria-hidden="true" />
-          Stack local
+          {sessionId ? 'Sesion activa' : 'Stack local'}
         </div>
       </section>
 
@@ -103,6 +106,22 @@ export function App() {
       </section>
     </main>
   );
+}
+
+function getStoredSessionId(): string | null {
+  try {
+    return globalThis.localStorage?.getItem('rag_session_id') ?? null;
+  } catch {
+    return null;
+  }
+}
+
+function storeSessionId(sessionId: string) {
+  try {
+    globalThis.localStorage?.setItem('rag_session_id', sessionId);
+  } catch {
+    // In non-browser test environments the active React state still preserves the session.
+  }
 }
 
 function ChatTurnView({ turn }: { turn: ChatTurn }) {

@@ -4,6 +4,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { App } from './App';
 
 const supportedResponse = {
+  session_id: 'session-1',
   answer: 'Respuesta con evidencia',
   supported_by_context: true,
   sources: [
@@ -20,6 +21,7 @@ const supportedResponse = {
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
+  globalThis.localStorage?.clear();
 });
 
 describe('App', () => {
@@ -61,6 +63,7 @@ describe('App', () => {
       new Response(
         JSON.stringify({
           answer: 'No hay información suficiente.',
+          session_id: 'session-ood',
           supported_by_context: false,
           sources: [],
           metadata: {},
@@ -97,5 +100,29 @@ describe('App', () => {
     await waitFor(() =>
       expect(screen.getByText('El servicio RAG no esta disponible')).toBeInTheDocument(),
     );
+  });
+
+  it('reuses the session id returned by the backend', async () => {
+    const fetchMock = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(JSON.stringify(supportedResponse), { status: 200 }),
+    );
+    render(<App />);
+
+    await userEvent.type(screen.getByRole('textbox', { name: /pregunta/i }), 'primera');
+    await userEvent.click(screen.getByRole('button', { name: /enviar/i }));
+    await waitFor(() => expect(screen.getByText('Respuesta con evidencia')).toBeInTheDocument());
+
+    await userEvent.type(screen.getByRole('textbox', { name: /pregunta/i }), 'segunda');
+    await userEvent.click(screen.getByRole('button', { name: /enviar/i }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+
+    expect(JSON.parse(fetchMock.mock.calls[0][1]?.body as string)).toEqual({
+      message: 'primera',
+      session_id: null,
+    });
+    expect(JSON.parse(fetchMock.mock.calls[1][1]?.body as string)).toEqual({
+      message: 'segunda',
+      session_id: 'session-1',
+    });
   });
 });
